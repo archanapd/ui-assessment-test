@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Toolbar, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ReactPlayer from 'react-player';
+import PlayCircleFilledRoundedIcon from '@mui/icons-material/PlayCircleFilledRounded';
 
 import './VideoPlayer.scss';
 import PlayerControls from './PlayerControls';
@@ -9,7 +10,13 @@ import PlayerControls from './PlayerControls';
 const useStyles: any = makeStyles({
   playerWrapper: {
     width: '100%',
-    postition: 'relative'
+    position: 'relative'
+  },
+  vdoPlyBtn: {
+    fontSize: '72px',
+    background: '#00ADC6',
+    borderRadius: '16px',
+    cursor: 'pointer',
   }
 });
 
@@ -114,7 +121,7 @@ export default function VideoPlayer(props: any) {
   return (
     <React.Fragment>
       <Container style={{position: "relative"}}>
-      {!playing && <div className="vdo-player-wrapper" onClick={handleVideoStart}>Button</div>}
+      {!playing && <div className="vdo-player-wrapper" onClick={handleVideoStart}><PlayCircleFilledRoundedIcon className={classes.vdoPlyBtn} /></div>}
       <div className={'cake-vdo-row ' + classes.playerWrapper}>
           <ReactPlayer
             ref={playerRef}

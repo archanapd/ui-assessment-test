@@ -20,7 +20,7 @@ import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 const useStyles: any = makeStyles({
   playerWrapper: {
     width: '100%',
-    postition: 'relative'
+    position: 'relative'
   },
   controlsWrapper: {
     position: 'relative',
@@ -137,6 +137,7 @@ export default function PlayerControls({
         direction="row"
         alignItems="center"
         justifyContent="space-between"
+        className='vdo-box'
       >
         <Grid item xs={12} className='vdo-control-block'>
           <PrettoSlider
