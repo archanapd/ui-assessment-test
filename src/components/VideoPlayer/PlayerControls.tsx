@@ -183,7 +183,7 @@ export default function PlayerControls({
           <Button
             onClick={handlePopOver}
             variant="text"
-            style={{ color: 'black', marginLeft: 16 }}
+            style={{ color: 'black' }}
             className={classes.bottomIcons}
           >
             <Typography>{playbackRate}x</Typography>

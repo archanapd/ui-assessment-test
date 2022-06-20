@@ -15,6 +15,20 @@
     max-width: 290px;
     height: 191px;
   }
+  .MuiFormGroup-root {
+    video {
+      max-width: 290px;
+      height: 191px;
+    }
+    .vdo-player-wrapper {
+      .MuiSvgIcon-root {
+        font-size: 48px !important;
+      }
+    }
+    .MuiTypography-root {
+      padding: 9px 0 !important;
+    }
+  }
   &>div {
     .MuiTypography-root {
       div {
