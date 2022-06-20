@@ -41,7 +41,11 @@
     }
     .MuiRadio-root {
       position: relative;
-      margin-right: 24px;
+      margin-right: 0;
+      padding-left: 0;
+      @media screen and (min-width: 992px){
+        margin-right: 24px;
+      }
       &::before {
         font-family: 'Gotham Rounded';
         font-size: 15px;

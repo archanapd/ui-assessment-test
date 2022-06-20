@@ -15,7 +15,10 @@
   }
   .vdo-time-txt {
     font-family: 'Gotham Rounded' !important;
-    font-size: 12px !important;
+    font-size: 10px !important;
+    @media screen and (min-width: 992px){
+      font-size: 12px !important;
+    }
   }
   .vdo-control-block {
     padding-left: 8px;
@@ -45,3 +48,23 @@
       display: none;
     }
   }
+.cake-vdo-controls-box {
+  .MuiSvgIcon-root {
+    @media screen and (max-width:991px) {
+      font-size: 18px;
+    }
+  }
+}
+.audio-label-class {
+  .vdo-player-wrapper {
+    max-width: 290px;
+    height: 191px;
+  }
+  img {
+    margin-bottom: 8px !important;
+  }
+  .cake-vdo-row {
+    max-width: 290px;
+    margin-bottom: 8px;
+  }
+}

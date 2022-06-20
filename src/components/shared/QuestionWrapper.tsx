@@ -59,7 +59,7 @@ const QuestionWrapper = () => {
           "General"
       ],
       "level": "LOW",
-      "type": "SINGLE_CHOICE",
+      "type": "MULTIPLE_CHOICE",
       "wrongFeedback": "",
       "correctFeedback": "",
       "content": "<div>Choose the correct answer</div>",

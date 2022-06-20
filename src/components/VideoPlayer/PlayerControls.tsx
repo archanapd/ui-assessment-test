@@ -152,7 +152,7 @@ export default function PlayerControls({
         </Grid>
 
         <Grid item>
-          <Grid container alignItems="center" direction="row">
+          <Grid container alignItems="center" direction="row" className='cake-vdo-controls-box'>
             <IconButton className={classes.bottomIcons} onClick={onPlayPause}>
               {playing ? <PauseRoundedIcon /> : <PlayArrowIcon />}
             </IconButton>

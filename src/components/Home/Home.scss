@@ -166,9 +166,19 @@ body {
     margin-bottom: 1rem;
   }
   audio {
-    width: 61%;
+    width: 100%;
     border: 1px solid #00adc6;
     border-radius: 30px;
+    margin-bottom: 0;
+    max-width: 293px;
+    @media screen and (min-width: 992px) {
+      width: 61%;
+    }
+  }
+  div {
+    &>br {
+      display: none;
+    }
   }
 }
 audio::-webkit-media-controls-play-button {
