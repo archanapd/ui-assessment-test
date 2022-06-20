@@ -35,6 +35,8 @@ const format = (seconds: any) => {
 }
 
 export default function VideoPlayer(props: any) {
+
+  const {url} = props;
   const classes = useStyles();
 
   const playerRef: any = useRef(null);
@@ -127,7 +129,7 @@ export default function VideoPlayer(props: any) {
             ref={playerRef}
             width={'100%'}
             height={'100%'}
-            url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+            url={url}
             muted={muted}
             playing={playing}
             volume={volume}

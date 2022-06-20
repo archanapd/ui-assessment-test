@@ -51,49 +51,56 @@ const QuestionWrapper = () => {
     // });
 
     const data = {
-      ref: '62addc60b6767c5a8d355e33',
-      questionId: '4cb26654-a605-4ca6-a2b6-b0378151cd0b',
-      version: 1,
-      skillCompetency: ['Movie', 'General'],
-      level: 'LOW',
-      type: 'SINGLE_CHOICE',
-      wrongFeedback: '',
-      correctFeedback: '',
-      content:
-        '<div>Identify this</div><div><br></div><div><video width="150" controls=""><source src="https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654578401907_1856194731.mp4" type="video/mp4"><br></video><br></div>',
-      studyId: null,
-      categoryId: null,
-      levelId: null,
-      answerGroupRef: ['S1'],
-      answerGroups: [
-        {
-          groupId: 'S1',
-          answers: [
-            {
-              id: '62addc60b6767c5a8d355e36',
-              content:
-                '<video width="150" controls=""><source src="https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654578382347_1368748532.mp4" type="video/mp4"></video>',
-              groupId: 'S1',
-              selected: false
-            },
-            {
-              id: '62addc60b6767c5a8d355e35',
-              content:
-                '<div>Image</div><div><img src="https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654576506067_286895088.webp" alt="" width="120"><br></div>',
-              groupId: 'S1',
-              selected: false
-            },
-            {
-              id: '62addc60b6767c5a8d355e34',
-              content:
-                '<div>Audio</div><div><audio controls=""><source src="https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687975825_1457280728.mp3" type="audio/ogg"></audio><br></div>',
-              groupId: 'S1',
-              selected: false
-            }
-          ]
-        }
+      "ref": "62ac7472b6767c5a8d355e2e",
+      "questionId": "82164d80-99b7-474b-b76f-ff253fae4e05",
+      "version": 1,
+      "skillCompetency": [
+          "Movie",
+          "General"
+      ],
+      "level": "LOW",
+      "type": "SINGLE_CHOICE",
+      "wrongFeedback": "",
+      "correctFeedback": "",
+      "content": "<div>Choose the correct answer</div>",
+      "studyId": null,
+      "categoryId": null,
+      "levelId": null,
+      "answerGroupRef": [
+          "S1"
+      ],
+      "answerGroups": [
+          {
+              "groupId": "S1",
+              "answers": [
+                  {
+                      "id": "62ac7472b6767c5a8d355e2f",
+                      "content": "<video width=\"150\" controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687355815_1071234500.mp4\" type=\"video/mp4\"></video>",
+                      "groupId": "S1",
+                      "selected": false
+                  },
+                  {
+                      "id": "62ac7472b6767c5a8d355e31",
+                      "content": "<div>All of the above</div><div><br></div><div><img src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654576478779_1078379218.jfif\" alt=\"\" width=\"120\"></div><div><br></div><div><br></div><div><video width=\"150\" controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687355815_1071234500.mp4\" type=\"video/mp4\"><br></video></div><div><br></div><div><br></div><div><audio controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687975825_1457280728.mp3\" type=\"audio/ogg\"></audio><br></div>",
+                      "groupId": "S1",
+                      "selected": false
+                  },
+                  {
+                      "id": "62ac7472b6767c5a8d355e30",
+                      "content": "<div><audio controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687975825_1457280728.mp3\" type=\"audio/ogg\"></audio></div>",
+                      "groupId": "S1",
+                      "selected": false
+                  },
+                  {
+                      "id": "62ac7472b6767c5a8d355e32",
+                      "content": "<div>none of the above</div>",
+                      "groupId": "S1",
+                      "selected": false
+                  }
+              ]
+          }
       ]
-    };
+  }
     setQuestion([...questions, data]);
   };
   

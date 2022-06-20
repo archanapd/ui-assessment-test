@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
-import { Grid } from '@mui/material';
-import './CheckBoxGroup.scss';
 import ReactHtmlParser from 'react-html-parser';
 import VideoPlayer from 'components/VideoPlayer/VideoPlayer';
+
+import './CheckBoxGroup.scss';
 
 export default function CheckBoxGroup(props: any) {
   const [selection, setSelection] = useState<string[]>([]);
@@ -52,7 +52,7 @@ export default function CheckBoxGroup(props: any) {
   const getWrapperClass = () => {
     const arr = props.options.answerGroups[0].answers;
     let classValue: string = arr.some((item: any) =>
-      item.content.includes('img')
+      item.content.includes('img') || item.content.includes('video')
     )
       ? 'img-wrapper'
       : '';
@@ -60,7 +60,6 @@ export default function CheckBoxGroup(props: any) {
   };
 
   const getLabelClass = (content:any) => {
-    console.log(content);
     if (content.includes('audio')) {
       return 'audio-label-class';
     }

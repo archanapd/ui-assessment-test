@@ -15,7 +15,7 @@
     max-width: 290px;
     height: 191px;
   }
-  .MuiFormGroup-root {
+  .MuiFormGroup-root, .MuiFormControlLabel-root {
     video {
       max-width: 290px;
       height: 191px;
@@ -32,8 +32,8 @@
   &>div {
     .MuiTypography-root {
       div {
-        font-family: 'Gotham Rounded' !important;
-        font-size: 12px;
+        // font-family: 'Gotham Rounded' !important;
+        // font-size: 12px;
         br {
           display: none;
         }

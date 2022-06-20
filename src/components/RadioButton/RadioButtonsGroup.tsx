@@ -51,7 +51,7 @@ export default function RadioButtonsGroup(props: any) {
 
   const htmlParserTransform = (node: any) => {
     if (node.type == 'tag' && node.name == 'video') {
-      const nodeVal = <VideoPlayer key={1}/>;
+      const nodeVal = <VideoPlayer key={1} url={node.children[0].attribs.src} />;
       return nodeVal;
     }
   };
