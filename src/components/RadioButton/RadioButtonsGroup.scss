@@ -81,6 +81,17 @@
       }
     }
   }
+  .Mui-checked + span{
+    &::before {
+      content: "";
+      position: absolute;
+      border: 2px solid #98C93C;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
 }
 .is-content-disabled {
   pointer-events: none;
