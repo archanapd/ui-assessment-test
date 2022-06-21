@@ -7,7 +7,6 @@ import { Container, Box, Grid } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import './RadioButtonsGroup.scss';
-import VideoPlayer from 'components/VideoPlayer/VideoPlayer';
 
 export default function RadioButtonsGroup(props: any) {
   let [selection, setSelection] = useState<any>('');
@@ -30,7 +29,7 @@ export default function RadioButtonsGroup(props: any) {
   const getWrapperClass = () => {
     const arr = props.options.answerGroups[0].answers;
     let classValue: string = arr.some((item: any) =>
-      (item.content.includes('img') || item.content.includes('video') || item.content.includes('audio'))
+      item.content.includes('img')
     )
       ? 'img-wrapper'
       : '';
@@ -49,29 +48,6 @@ export default function RadioButtonsGroup(props: any) {
     });
   };
 
-  const htmlParserTransform = (node: any) => {
-    if (node.type == 'tag' && node.name == 'video') {
-      const nodeVal = <VideoPlayer key={1} url={node.children[0].attribs.src} />;
-      return nodeVal;
-    }
-  };
-
-  const getLabel = (item: any) => {
-    return ReactHtmlParser(item.content, {
-      transform: htmlParserTransform
-    })
-  }
-
-  const getLabelClass = (content:any) => {
-    if (content.includes('audio')) {
-      return 'audio-label-class';
-    }
-    if(props.disabled) {
-      return 'is-content-disabled';
-    }
-  }
-  
-
   useEffect(() => {
     setAnswers('fill');
   }, [props]);
@@ -79,14 +55,12 @@ export default function RadioButtonsGroup(props: any) {
     <Container>
       <Box sx={{ bgcolor: 'white' }} className="radio-wrapper">
         <FormControl className={getWrapperClass()}>
-          {ReactHtmlParser(props.options.content, {
-            transform: htmlParserTransform
-          })}
+          <Grid>{ReactHtmlParser(props.options.content)}</Grid>
           {props.options.answerGroups[0].answers.map(
             (item: any, ind: number) => {
               return (
                 <RadioGroup
-                  className={getLabelClass(item.content)}
+                  className={props.disabled ? 'is-content-disabled' : ''}
                   aria-labelledby="demo-radio-buttons-group-label"
                   name="radio-buttons-group"
                   key={item.id}
@@ -96,7 +70,7 @@ export default function RadioButtonsGroup(props: any) {
                   <FormControlLabel
                     control={<Radio />}
                     value={item.content}
-                    label={getLabel(item)}
+                    label={ReactHtmlParser(item.content)}
                   />
                 </RadioGroup>
               );

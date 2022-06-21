@@ -37,7 +37,6 @@ const SubmitWrapper = () => {
   let [questions, setQuestions] = useState<any[]>([]);
 
   const getUserAnswersFromApi = () => {
-    console.log('getUserAnswersFromApi');
     if (initSettings) {
       callAPI({
         method: 'get',

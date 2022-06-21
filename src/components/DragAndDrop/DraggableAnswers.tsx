@@ -3,12 +3,12 @@ import { Container } from '@mui/material';
 
 import './DragAndDrop.scss';
 
-export default function Draggables(props: any) {
+export default function DraggableAnswers(props: any) {
   const {answerContent, groupId, index} = props;
 
   return (
     <Container>
-      <Draggable draggableId={`drag`+groupId} index={Number(index)}>
+      <Draggable draggableId={`draggable`+groupId} index={Number(index)}>
         {(provided) => (
           <div
             className="list"

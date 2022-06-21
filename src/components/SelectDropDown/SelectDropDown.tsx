@@ -54,7 +54,7 @@ export default function SelectDropDown(props: any) {
       case 'ArrowDown':
         e.preventDefault();
         setSelectedOption(
-          selectedOption === props.values.answers.length - 1
+          selectedOption == props.values.answers.length - 1
             ? 0
             : selectedOption + 1
         );
@@ -91,7 +91,7 @@ export default function SelectDropDown(props: any) {
                 key={index}
                 id={option.id}
                 role="option"
-                aria-selected={selectedOption === index}
+                aria-selected={selectedOption == index}
                 tabIndex={0}
                 onKeyDown={handleKeyDown(index)}
                 onClick={() => {

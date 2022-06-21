@@ -51,61 +51,49 @@ const QuestionWrapper = () => {
     // });
 
     const data = {
-      "ref": "62ac7472b6767c5a8d355e2e",
-      "questionId": "82164d80-99b7-474b-b76f-ff253fae4e05",
-      "version": 1,
-      "skillCompetency": [
-          "Movie",
-          "General"
-      ],
-      "level": "LOW",
-      "type": "SINGLE_CHOICE",
-      "wrongFeedback": "",
-      "correctFeedback": "",
-      "content": "<div>Choose the correct answer</div>",
-      "studyId": null,
-      "categoryId": null,
-      "levelId": null,
-      "answerGroupRef": [
-          "S1"
-      ],
-      "answerGroups": [
-          {
-              "groupId": "S1",
-              "answers": [
-                  {
-                      "id": "62ac7472b6767c5a8d355e2f",
-                      "content": "<video width=\"150\" controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687355815_1071234500.mp4\" type=\"video/mp4\"></video>",
-                      "groupId": "S1",
-                      "selected": false
-                  },
-                  {
-                      "id": "62ac7472b6767c5a8d355e31",
-                      "content": "<div>All of the above</div><div><br></div><div><img src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654576478779_1078379218.jfif\" alt=\"\" width=\"120\"></div><div><br></div><div><br></div><div><video width=\"150\" controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687355815_1071234500.mp4\" type=\"video/mp4\"><br></video></div><div><br></div><div><br></div><div><audio controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687975825_1457280728.mp3\" type=\"audio/ogg\"></audio><br></div>",
-                      "groupId": "S1",
-                      "selected": false
-                  },
-                  {
-                      "id": "62ac7472b6767c5a8d355e30",
-                      "content": "<div><audio controls=\"\"><source src=\"https://s3.ap-southeast-1.amazonaws.com/dev.squline.com/assisment/1654687975825_1457280728.mp3\" type=\"audio/ogg\"></audio></div>",
-                      "groupId": "S1",
-                      "selected": false
-                  },
-                  {
-                      "id": "62ac7472b6767c5a8d355e32",
-                      "content": "<div>none of the above</div>",
-                      "groupId": "S1",
-                      "selected": false
-                  }
-              ]
-          }
+      ref: '62975e33d806a7307dc03143',
+      questionId: 'f7f75545-087b-4f3f-8b09-112dec013e59',
+      version: 1,
+      skillCompetency: ['Movie', 'General'],
+      level: 'LOW',
+      type: 'FILL_IN_THE_BLANK_DRAG',
+      wrongFeedback: 'Nothing',
+      correctFeedback: 'Nothing',
+      content:
+        '<div>1. Rainbow consisit of&nbsp;[D1]&nbsp;numbers of colors?</div><div>2.[D2]&nbsp;is known as the ship of desert?</div>',
+      studyId: null,
+      categoryId: null,
+      levelId: null,
+      answerGroupRef: ['D1', 'D2'],
+      answerGroups: [
+        {
+          groupId: 'D1',
+          answers: [
+            {
+              id: '62975e33d806a7307dc03144',
+              content: 'Seven',
+              selectedAnswer: '',
+              groupId: 'D1',
+              selected: false
+            }
+          ]
+        },
+        {
+          groupId: 'D2',
+          answers: [
+            {
+              id: '62975e33d806a7307dc03145',
+              content: 'Camel',
+              selectedAnswer: '',
+              groupId: 'D2',
+              selected: false
+            }
+          ]
+        }
       ]
-  }
-
-
+    };
     setQuestion([...questions, data]);
   };
-  
   localStorage.setItem('savedQuestions', JSON.stringify(questions));
 
   const saveAnswers = () => {
@@ -165,6 +153,7 @@ const QuestionWrapper = () => {
       });
       bodyJson.answers.shift();
     }
+    console.log('??????', bodyJson);
     return bodyJson;
   };
 

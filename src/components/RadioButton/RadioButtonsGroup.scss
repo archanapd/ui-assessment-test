@@ -15,25 +15,11 @@
     max-width: 290px;
     height: 191px;
   }
-  .MuiFormGroup-root, .MuiFormControlLabel-root {
-    video {
-      max-width: 290px;
-      height: 191px;
-    }
-    .vdo-player-wrapper {
-      .MuiSvgIcon-root {
-        font-size: 48px !important;
-      }
-    }
-    .MuiTypography-root {
-      padding: 9px 0 !important;
-    }
-  }
   &>div {
     .MuiTypography-root {
       div {
-        // font-family: 'Gotham Rounded' !important;
-        // font-size: 12px;
+        font-family: 'Gotham Rounded' !important;
+        font-size: 12px;
         br {
           display: none;
         }
@@ -41,11 +27,7 @@
     }
     .MuiRadio-root {
       position: relative;
-      margin-right: 0;
-      padding-left: 0;
-      @media screen and (min-width: 992px){
-        margin-right: 24px;
-      }
+      margin-right: 24px;
       &::before {
         font-family: 'Gotham Rounded';
         font-size: 15px;
@@ -83,9 +65,53 @@
     }
   }
 }
+// #img-questions-6 {
+//   img {
+//     max-width: 290px;
+//     height: 191px;
+//   }
+//   .radio-buttons {
+//     width: 100%;
+//     position: relative;
+//     padding: 24px 0;
+//     div{
+//       font-family: 'Gotham Rounded' !important;
+//       font-size: 12px;
+//       br {
+//         display: none;
+//       }
+//     }
+//   }
+//   &>div {
+//     .MuiRadio-root {
+//       position: relative;
+//       margin-right: 24px;
+//       &.Mui-checked {
+//         &::before {
+//           color: #98C93C;
+//         }
+//       }
+//     }
+//     &:nth-child(1) {
+//       margin-bottom: 24px;
+//       border-bottom: 1px solid #B9B9CB;
+//       padding-bottom: 24px;
+//     }
+//     &.MuiFormGroup-root {
+//       margin-bottom: 24px;
+//       .MuiTypography-root {
+//         padding: 24px 0;
+//         img {
+//           margin-bottom: 0;
+//         }
+//       }
+//       .MuiFormControlLabel-root {
+//         position: relative;
+//         margin: 0;
+//       }
+//     }
+//   }
+// }
 .is-content-disabled {
   pointer-events: none;
-}
-.audio-label-class .MuiFormControlLabel-label {
-  width: 100%;
 }

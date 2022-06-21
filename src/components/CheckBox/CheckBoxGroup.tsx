@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
-import ReactHtmlParser from 'react-html-parser';
-import VideoPlayer from 'components/VideoPlayer/VideoPlayer';
-
+import { Grid } from '@mui/material';
 import './CheckBoxGroup.scss';
+import ReactHtmlParser from 'react-html-parser';
 
 export default function CheckBoxGroup(props: any) {
   const [selection, setSelection] = useState<string[]>([]);
@@ -36,51 +35,27 @@ export default function CheckBoxGroup(props: any) {
     });
   };
 
-  const htmlParserTransform = (node: any) => {
-    if (node.type == 'tag' && node.name == 'video') {
-      const nodeVal = <VideoPlayer key={1} url={node.children[0].attribs.src} />;
-      return nodeVal;
-    }
-  };
-
-  const getLabel = (item: any) => {
-    return ReactHtmlParser(item.content, {
-      transform: htmlParserTransform
-    })
-  }
-  
   const getWrapperClass = () => {
     const arr = props.options.answerGroups[0].answers;
     let classValue: string = arr.some((item: any) =>
-      (item.content.includes('img') || item.content.includes('video') || item.content.includes('audio'))
+      item.content.includes('img')
     )
       ? 'img-wrapper'
       : '';
     return classValue;
   };
 
-  const getLabelClass = (content:any) => {
-    if (content.includes('audio')) {
-      return 'audio-label-class';
-    }
-    if(props.disabled) {
-      return 'is-content-disabled';
-    }
-  }
-
   useEffect(() => {
     setAnswers();
   }, [props]);
   return (
     <FormControl className={getWrapperClass()}>
-      {ReactHtmlParser(props.options.content, {
-          transform: htmlParserTransform
-        })}
+      <Grid>{ReactHtmlParser(props.options.content)}</Grid>
       {props.options.answerGroups[0].answers.map((item: any, indx: number) => {
         return (
           <FormControlLabel
-            className={getLabelClass(item.content)}
-            label={getLabel(item)}
+            className={props.disabled ? 'is-content-disabled' : ''}
+            label={ReactHtmlParser(item.content)}
             value={item.content}
             control={
               <Checkbox
