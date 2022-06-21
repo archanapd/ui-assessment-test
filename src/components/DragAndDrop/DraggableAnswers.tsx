@@ -7,20 +7,18 @@ export default function DraggableAnswers(props: any) {
   const {answerContent, groupId, index} = props;
 
   return (
-    <Container>
-      <Draggable draggableId={`draggable`+groupId} index={Number(index)}>
-        {(provided) => (
-          <div
-            className="list"
-            id={groupId}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-          >
-            {answerContent}
-          </div>
-        )}
-      </Draggable>
-    </Container>
+    <Draggable draggableId={`draggable`+groupId} index={Number(index)}>
+      {(provided) => (
+        <div
+          className="list"
+          id={groupId}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+          {answerContent}
+        </div>
+      )}
+    </Draggable>
   );
 }
