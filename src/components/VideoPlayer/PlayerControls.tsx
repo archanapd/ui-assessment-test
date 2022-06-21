@@ -50,7 +50,10 @@ const useStyles: any = makeStyles({
     }
   },
   volumeSlider: {
-    width: 100
+    width: 50,
+    '@media (min-width: 992px)' : {
+      width: 100
+    }
   }
 });
 

@@ -123,8 +123,8 @@ export default function VideoPlayer(props: any) {
   return (
     <React.Fragment>
       <Container style={{position: "relative"}}>
-      {!playing && <div className="vdo-player-wrapper" onClick={handleVideoStart}><PlayCircleFilledRoundedIcon className={classes.vdoPlyBtn} /></div>}
       <div className={'cake-vdo-row ' + classes.playerWrapper}>
+      {!playing && <div className="vdo-player-wrapper" onClick={handleVideoStart}><PlayCircleFilledRoundedIcon className={classes.vdoPlyBtn} /></div>}
           <ReactPlayer
             ref={playerRef}
             width={'100%'}
