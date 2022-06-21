@@ -52,7 +52,7 @@ export default function CheckBoxGroup(props: any) {
   const getWrapperClass = () => {
     const arr = props.options.answerGroups[0].answers;
     let classValue: string = arr.some((item: any) =>
-      item.content.includes('img') || item.content.includes('video')
+      (item.content.includes('img') || item.content.includes('video') || item.content.includes('audio'))
     )
       ? 'img-wrapper'
       : '';

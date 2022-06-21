@@ -59,7 +59,7 @@ const QuestionWrapper = () => {
           "General"
       ],
       "level": "LOW",
-      "type": "MULTIPLE_CHOICE",
+      "type": "SINGLE_CHOICE",
       "wrongFeedback": "",
       "correctFeedback": "",
       "content": "<div>Choose the correct answer</div>",
@@ -101,6 +101,8 @@ const QuestionWrapper = () => {
           }
       ]
   }
+
+
     setQuestion([...questions, data]);
   };
   
