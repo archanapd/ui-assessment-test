@@ -36,31 +36,31 @@ export default function DragAndDrop(props: any) {
     const startIndex = source.index;
     let tempAnswerArray:any = Array.from(data.answerArray);
     let tempDropArray:any = Array.from(data.droppedValueArray);
+
+    console.log(1, result)
     
     if (!destination) {
       return;
     }
 
     if (destination.droppableId === source.droppableId) {
+      console.log("yesssss")
       return;
     }
 
     
     if(source.droppableId === "answerLists" && destination.droppableId !== "answerLists") {
-      console.log(1, result)
       const [removed] = tempAnswerArray.splice(startIndex, 1);
       const endIndex = Number(destination.droppableId);
       tempDropArray[endIndex] = removed;
       setData({ ...data, answerArray: tempAnswerArray, droppedValueArray: tempDropArray });
     }
     if (destination.droppableId === "answerLists") {
-      console.log(2, result)
       const [removed] = tempDropArray.splice(startIndex, 1);
       tempAnswerArray.splice(startIndex, 0, removed);
       setData({ ...data, answerArray: tempAnswerArray, droppedValueArray: tempDropArray });
     }
     if(source.droppableId !== "answerLists" && destination.droppableId !== "answerLists") {
-      console.log(3, result);
       const [removed] = tempDropArray.splice(startIndex, 1);
       tempDropArray[destination.droppableId] = removed;
       setData({ ...data, droppedValueArray: tempDropArray });

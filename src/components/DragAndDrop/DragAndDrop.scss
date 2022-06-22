@@ -38,7 +38,7 @@ $green: #98c93c;
     font-weight: bolder;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    margin: 0 7px 0 0;
+    margin: 0 7px 10px 0;
     font-family: "Gotham Rounded" !important;
     background-color: #fff;
     cursor: grabbing;
@@ -50,7 +50,6 @@ $green: #98c93c;
   padding-top: 11px;
   .drag-wrapper {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    display: block;
   }
 }
