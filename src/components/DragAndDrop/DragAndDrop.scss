@@ -29,7 +29,7 @@ $green: #98c93c;
 .drag-wrapper {
   display: inline-flex;
   .list {
-    width: 135px;
+    min-width: 135px;
     height: 37px;
     color: $green;
     padding: 7px 38px;
@@ -53,5 +53,11 @@ $green: #98c93c;
     min-height: 100px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+.drag-quest-list {
+  &>div {
+    margin-bottom: 12px;
   }
 }

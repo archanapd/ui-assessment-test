@@ -34,10 +34,11 @@ export default function DropZone(props: any) {
 
   return (
     <Container>
-      {ReactHtmlParser(formatLabel(mainQuestion), {
-        transform: htmlParserTransform
-      })}
-
+      <div className='drag-quest-list'>
+        {ReactHtmlParser(formatLabel(mainQuestion), {
+          transform: htmlParserTransform
+        })}
+      </div>
       <div className='drop-zone'>
         <Droppable droppableId="answerLists" direction="horizontal">
           {(provided) => (
