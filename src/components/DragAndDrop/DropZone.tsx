@@ -39,7 +39,7 @@ export default function DropZone(props: any) {
       })}
 
       <div className='drop-zone'>
-        <Droppable droppableId="answerLists">
+        <Droppable droppableId="answerLists" direction="horizontal">
           {(provided) => (
             <div
               ref={provided.innerRef}

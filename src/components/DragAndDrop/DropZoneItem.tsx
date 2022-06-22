@@ -8,7 +8,7 @@ export default function DropZoneItem(props: any) {
 
   return (
     <span className="drop-options-wrapper" id={groupId}>
-       <Droppable droppableId={index}>
+       <Droppable droppableId={index} direction="horizontal">
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             {droppedValueArray[index] && <div>
