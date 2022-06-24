@@ -27,6 +27,7 @@ import CheckBoxGroup from 'components/CheckBox/CheckBoxGroup';
 import FillInTheBlanks from 'components/FillInTheBlanks/FillInTheBlanks';
 import FillInTheSelect from 'components/FillInTheSelect/FillInTheSelect';
 import SpeakTheWords from 'components/SpeakTheWords/SpeakTheWords';
+import DragAndDrop from 'components/DragAndDrop/DragAndDrop';
 
 const SubmitWrapper = () => {
   const initSettings: any = JSON.parse(
@@ -165,6 +166,12 @@ const SubmitWrapper = () => {
                     {question.type === 'FILL_IN_THE_BLANK_DROPDOWN' && (
                       <Grid>
                         <FillInTheSelect options={question} disabled={true} />
+                      </Grid>
+                    )}
+
+                    {question.type === 'FILL_IN_THE_BLANK_DRAG' && (
+                      <Grid>
+                        <DragAndDrop options={question} disabled={true} />
                       </Grid>
                     )}
 

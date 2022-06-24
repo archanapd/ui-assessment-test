@@ -75,7 +75,7 @@ const SpeakTheWords = (props: any) => {
     <div>
       <div>
         <span>
-          Please say: <strong>{ReactHtmlParser(props.options.content)}</strong>
+          <strong>{ReactHtmlParser(props.options.content)}</strong>
         </span>
         <br></br>
         {props.showFullOptions && (
@@ -95,7 +95,7 @@ const SpeakTheWords = (props: any) => {
             </div>
           ) : (
             <div>
-              <p id="SPEECH_BASIC">{finalTranscript}</p>
+              <p id="SPEECH_BASIC" className="final-transcript">{finalTranscript}</p>
             </div>
           )}
         </div>
