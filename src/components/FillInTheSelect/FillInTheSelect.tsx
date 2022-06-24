@@ -51,7 +51,7 @@ export default function FillInTheSelect(props: any) {
         groupId: props.options.answerGroups[id].groupId,
         answers: newArray
       };
-      return <SelectDropDown values={params} id={props.options.ref} />;
+      return <SelectDropDown key={props.options.ref} values={params} id={props.options.ref} />;
     }
   };
 

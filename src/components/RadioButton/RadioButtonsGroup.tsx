@@ -29,8 +29,11 @@ export default function RadioButtonsGroup(props: any) {
 
   const getWrapperClass = () => {
     const arr = props.options.answerGroups[0].answers;
-    let classValue: string = arr.some((item: any) =>
-      (item.content.includes('img') || item.content.includes('video') || item.content.includes('audio'))
+    let classValue: string = arr.some(
+      (item: any) =>
+        item.content.includes('img') ||
+        item.content.includes('video') ||
+        item.content.includes('audio')
     )
       ? 'img-wrapper'
       : '';
@@ -51,7 +54,10 @@ export default function RadioButtonsGroup(props: any) {
 
   const htmlParserTransform = (node: any) => {
     if (node.type == 'tag' && node.name == 'video') {
-      const nodeVal = <VideoPlayer key={1} url={node.children[0].attribs.src} />;
+      const randomKey = Math.floor((Math.random() * 1000) + 1);
+      const nodeVal = (
+        <VideoPlayer key={randomKey} url={node.children[0].attribs.src} />
+      );
       return nodeVal;
     }
   };
@@ -59,18 +65,17 @@ export default function RadioButtonsGroup(props: any) {
   const getLabel = (item: any) => {
     return ReactHtmlParser(item.content, {
       transform: htmlParserTransform
-    })
-  }
+    });
+  };
 
-  const getLabelClass = (content:any) => {
+  const getLabelClass = (content: any) => {
     if (content.includes('audio')) {
       return 'audio-label-class';
     }
-    if(props.disabled) {
+    if (props.disabled) {
       return 'is-content-disabled';
     }
-  }
-  
+  };
 
   useEffect(() => {
     setAnswers('fill');

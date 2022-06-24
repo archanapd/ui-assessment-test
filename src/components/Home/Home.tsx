@@ -17,24 +17,24 @@ function App() {
     localStorage.setItem('initSettings', JSON.stringify(initSettings));
     navigate('/questions/' + 1, {});
   };
-  // const assessmentData = {
-  //   assessmentLink: 'ea5d8ddd-97e1-4267-b68b-27141bfd1a64',
-  //   userId: 'U1222'
-  // };
-  // const getAssessmentSettings = () => {
-  //   callAPI({
-  //     method: 'post',
-  //     data: assessmentData,
-  //     resource: BASE_URL + '/start',
-  //     success: (data) => {
-  //       updateInitSettings([...initSettings, data]);
-  //     },
-  //     error: (error) => console.log(error)
-  //   });
-  // };
+  const assessmentData = {
+    assessmentLink: '7354cbd5-c49f-49ad-a188-a411b6e77777',
+    userId: 'P1222'
+  };
+  const getAssessmentSettings = () => {
+    callAPI({
+      method: 'post',
+      data: assessmentData,
+      resource: BASE_URL + '/start',
+      success: (data) => {
+        updateInitSettings([...initSettings, data]);
+      },
+      error: (error) => console.log(error)
+    });
+  };
 
   React.useEffect(() => {
-    //getAssessmentSettings();
+    getAssessmentSettings();
   }, []);
 
   return (

@@ -1,22 +1,23 @@
 import { Draggable } from 'react-beautiful-dnd';
-import { Container, Grid } from '@mui/material';
+import { Container } from '@mui/material';
 
 import './DragAndDrop.scss';
 
 export default function Draggables(props: any) {
-  const { groupId, ind, products } = props;
+  const { answerContent, groupId, index } = props;
+
   return (
     <Container>
-      <Draggable draggableId={`drag` + groupId} index={ind}>
+      <Draggable draggableId={`drag` + groupId} index={Number(index)}>
         {(provided) => (
           <div
             className="list"
-            id={`drag` + groupId}
+            id={groupId}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            {products.content}
+            {answerContent}
           </div>
         )}
       </Draggable>

@@ -1,18 +1,34 @@
-import { Container } from '@mui/material';
 import { Droppable } from 'react-beautiful-dnd';
-
 import './DragAndDrop.scss';
+import Draggables from './Draggables';
 
 export default function DropZoneItem(props: any) {
-  const { dropId } = props;
+  const { groupId, answerArray, droppedValueArray, index } = props;
 
   return (
-    <Container className="drop-options-wrapper">
-      <Droppable droppableId={dropId}>
+    <span className="drop-options-wrapper" id={groupId}>
+      <Droppable
+        droppableId={index}
+        direction="horizontal"
+        isDropDisabled={droppedValueArray[index] !== undefined}
+      >
         {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}></div>
+          <div ref={provided.innerRef} {...provided.droppableProps}>
+            {droppedValueArray[index] && (
+              <div>
+                <Draggables
+                  key={index}
+                  answerArray={answerArray}
+                  answerContent={droppedValueArray[index].content}
+                  groupId={droppedValueArray[index].groupId}
+                  index={index}
+                />
+              </div>
+            )}
+            {provided.placeholder}
+          </div>
         )}
       </Droppable>
-    </Container>
+    </span>
   );
 }

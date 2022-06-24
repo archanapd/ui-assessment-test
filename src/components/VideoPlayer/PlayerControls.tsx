@@ -39,7 +39,7 @@ const useStyles: any = makeStyles({
     transform: 'scale(0.9)',
     padding: '0',
     '&:hover': {
-      color: '#000',
+      color: '#000'
     }
   },
   bottomIcons: {
@@ -51,7 +51,7 @@ const useStyles: any = makeStyles({
   },
   volumeSlider: {
     width: 50,
-    '@media (min-width: 992px)' : {
+    '@media (min-width: 992px)': {
       width: 100
     }
   }
@@ -140,9 +140,9 @@ export default function PlayerControls({
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        className='vdo-box'
+        className="vdo-box"
       >
-        <Grid item xs={12} className='vdo-control-block'>
+        <Grid item xs={12} className="vdo-control-block">
           <PrettoSlider
             min={0}
             max={100}
@@ -155,7 +155,12 @@ export default function PlayerControls({
         </Grid>
 
         <Grid item>
-          <Grid container alignItems="center" direction="row" className='cake-vdo-controls-box'>
+          <Grid
+            container
+            alignItems="center"
+            direction="row"
+            className="cake-vdo-controls-box"
+          >
             <IconButton className={classes.bottomIcons} onClick={onPlayPause}>
               {playing ? <PauseRoundedIcon /> : <PlayArrowIcon />}
             </IconButton>
@@ -168,25 +173,29 @@ export default function PlayerControls({
             <IconButton onClick={onMute} className={classes.bottomIcons}>
               {muted ? <VolumeOffIcon /> : <VolumeUpIcon />}
             </IconButton>
-            {!muted && <Slider
-              min={0}
-              max={100}
-              value={volume * 100}
-              className={classes.volumeSlider}
-              onChange={onVolumeChange}
-              onChangeCommitted={onVolumeSeekUp}
-            />}
-            <Button variant="text" style={{ color: 'black' }} >
-              <Typography className='vdo-time-txt'>{elapsedTime} / {totalDuration}</Typography>
+            {!muted && (
+              <Slider
+                min={0}
+                max={100}
+                value={volume * 100}
+                className={classes.volumeSlider}
+                onChange={onVolumeChange}
+                onChangeCommitted={onVolumeSeekUp}
+              />
+            )}
+            <Button variant="text" style={{ color: 'black' }}>
+              <Typography className="vdo-time-txt">
+                {elapsedTime} / {totalDuration}
+              </Typography>
             </Button>
           </Grid>
         </Grid>
 
-        <Grid item className='vdo-pop-block'>
+        <Grid item className="vdo-pop-block">
           <Button
             onClick={handlePopOver}
             variant="text"
-            style={{ color: 'black'}}
+            style={{ color: 'black' }}
             className={classes.bottomIcons}
           >
             <Typography>{playbackRate}x</Typography>

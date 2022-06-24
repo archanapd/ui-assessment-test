@@ -7,71 +7,73 @@ import DropZone from './DropZone';
 
 export default function DragAndDrop(props: any) {
   const question = props.options;
-  const products: any[] = [];
-  const days: any[] = [];
-  const dragsOrder: any = [];
-  const daysOrder: any[] = [];
+  const answerArray: any[] = [];
+  const questionArray: any = [];
+  const droppedValueArray: any = [];
 
   question.answerGroups.map((item: any, i: number) => {
-    products.push({ id: item.groupId, content: item.answers[0].content });
-    days.push({ id: item.groupId, title: `Drop` + i, productIds: [] });
-    dragsOrder.push(`Drop` + i);
-    daysOrder.push(item.groupId);
+    answerArray.push(item.answers[0]);
+  });
+
+  question.answerGroupRef.map((item: any) => {
+    questionArray.push(item);
   });
 
   const initialData: any = {
-    products: products,
-    productsColumn: {
-      answerLists: {
-        id: 'products',
-        title: 'Products',
-        productIds: dragsOrder
-      }
-    },
-    days: days,
-    daysOrder: daysOrder
+    mainQuestion: question,
+    questionArray: questionArray,
+    answerArray: answerArray,
+    droppedValueArray: droppedValueArray
   };
 
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState({ ...initialData });
 
   const DragEnd = (result: DropResult) => {
-    const { source, destination, draggableId } = result;
-    console.log(result);
+    const { source, destination } = result;
 
-    if (!destination || destination.droppableId === 'answerLists') {
+    const startIndex = source.index;
+    let tempAnswerArray: any = Array.from(data.answerArray);
+    let tempDropArray: any = Array.from(data.droppedValueArray);
+
+    if (!destination) {
+      return;
+    }
+
+    if (destination.droppableId === source.droppableId) {
       return;
     }
 
     if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
+      source.droppableId === 'answerLists' &&
+      destination.droppableId !== 'answerLists'
     ) {
-      return;
+      const [removed] = tempAnswerArray.splice(startIndex, 1);
+      const endIndex = Number(destination.droppableId);
+      tempDropArray[endIndex] = removed;
+      setData({
+        ...data,
+        answerArray: tempAnswerArray,
+        droppedValueArray: tempDropArray
+      });
     }
-    const start: any =
-      source.droppableId === 'answerLists'
-        ? data.productsColumn[source.droppableId]
-        : '';
-    const finish: any = data.days.filter(
-      (item: any) => item.id === destination.droppableId
-    );
-
-    const startProductIds = Array.from(
-      source.droppableId === 'answerLists' ? start.productIds : start.productIds
-    );
-    startProductIds.splice(source.index, 1);
-    const newStart = { ...start, productIds: startProductIds };
-    const newState = {
-      ...data,
-      days: {
-        ...data.days,
-        [newStart.id]: newStart
-      },
-      productsColumn: {
-        ...data.productsColumn
-      }
-    };
-    setData(newState);
+    if (destination.droppableId === 'answerLists') {
+      const removed = tempDropArray[startIndex];
+      tempAnswerArray.splice(startIndex, 0, removed);
+      delete tempDropArray[startIndex];
+      setData({
+        ...data,
+        answerArray: tempAnswerArray,
+        droppedValueArray: tempDropArray
+      });
+    }
+    if (
+      source.droppableId !== 'answerLists' &&
+      destination.droppableId !== 'answerLists'
+    ) {
+      const [removed] = tempDropArray.splice(startIndex, 1);
+      tempDropArray[destination.droppableId] = removed;
+      setData({ ...data, droppedValueArray: tempDropArray });
+    }
   };
 
   return (
@@ -80,7 +82,7 @@ export default function DragAndDrop(props: any) {
       <Container>
         <DragDropContext onDragEnd={DragEnd}>
           <Grid>
-            <DropZone question={question} data={data}></DropZone>
+            <DropZone data={data}></DropZone>
           </Grid>
         </DragDropContext>
       </Container>
