@@ -84,7 +84,7 @@ export default function CheckBoxGroup(props: any) {
       {props.options.answerGroups[0].answers.map((item: any, indx: number) => {
         return (
           <FormControlLabel
-            className={getLabelClass(item.content)}
+            className={getLabelClass(item.content)+' chk-opt-item'}
             label={getLabel(item)}
             value={item.content}
             control={

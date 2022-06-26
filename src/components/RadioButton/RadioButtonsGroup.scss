@@ -41,7 +41,6 @@
     .MuiRadio-root {
       position: relative;
       margin-right: 0;
-      padding-left: 0;
       @media screen and (min-width: 992px){
         margin-right: 24px;
       }
@@ -61,6 +60,9 @@
           color: #98C93C;
         }
       }
+      .MuiFormControlLabel-root {
+        flex: 1;
+      }
     }
     &:nth-child(1) {
       margin-bottom: 24px;
@@ -78,6 +80,9 @@
       .MuiFormControlLabel-root {
         position: relative;
         margin: 0;
+        .MuiTypography-root {
+          flex: 1;
+        }
       }
     }
   }
@@ -91,6 +96,10 @@
       left: 0;
       top: 0;
     }
+  }
+  .chk-opt-item {
+    position: relative;
+    margin: 10px 0;
   }
 }
 .is-content-disabled {

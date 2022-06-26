@@ -44,6 +44,28 @@ body {
     &:last-child {
       border-bottom: none;
     }
+    .img-wrapper > div:nth-child(1) {
+      border: 0;
+      margin: 0;
+    }
+    .img-wrapper {
+      width: 100%;
+      audio {
+        margin-top: 10px;
+      }
+      .chk-opt-item {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      &> div .MuiRadio-root {
+        padding-left: 9px;
+      }
+    }
+    .cake-vdo-row {
+      video {
+        margin-bottom: 0;
+      }
+    }
   }
 	button {
 		border: 1px solid #98C93C;
@@ -406,3 +428,4 @@ audio::-webkit-media-controls-enclosure {
 p {
   margin: 0;
 }
+
