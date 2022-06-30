@@ -447,3 +447,16 @@ p {
     vertical-align: middle;
   }
 }
+.dialog-time-limit {
+  max-width: 382px;
+  margin: 0 auto;
+  .MuiPaper-elevation {
+    width: 100%;
+  }
+  .dialog-btm  {
+    margin-bottom: 20px;
+  }
+  .btn.btn-primary {
+    max-width: 171px;
+  }
+}
