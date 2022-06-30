@@ -190,6 +190,7 @@ const QuestionWrapper = () => {
       </ThemeProvider>
       <Container maxWidth="sm">
         <Box sx={{ bgcolor: 'white' }} className="question-wrapper">
+          <h3 className='txt-time-limit'>Time Limit <span>29:54</span></h3>
           <p className="qst-title">
             <b>Question {questionId}</b>
           </p>

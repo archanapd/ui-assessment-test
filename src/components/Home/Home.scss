@@ -24,7 +24,7 @@ body {
 }
 
 .question-wrapper {
-  padding-top: 95px;
+  padding-top: 80px;
   padding-bottom: 200px;
   @media screen and (min-width: 992px) {
     padding-top: 130px;
@@ -428,4 +428,22 @@ audio::-webkit-media-controls-enclosure {
 p {
   margin: 0;
 }
-
+.txt-time-limit {
+  font-family: 'Gotham Rounded' !important;
+  font-size: 14px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 25px;
+  span {
+    font-family: 'Gotham Rounded' !important;
+    font-size: 14px;
+    color: #9F0404;
+    background-color: #ECCDCD;
+    border-radius: 80px;
+    padding: 8px 8px 6px;
+    min-width: 56px;
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+}
