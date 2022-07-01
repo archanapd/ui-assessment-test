@@ -40,9 +40,11 @@ export default function DropZone(props: any) {
 
   return (
     <Container>
-      {ReactHtmlParser(formatLabel(mainQuestion), {
-        transform: htmlParserTransform
-      })}
+      <div className="drag-quest-list">
+        {ReactHtmlParser(formatLabel(mainQuestion), {
+          transform: htmlParserTransform
+        })}
+      </div>
 
       <div className="drop-zone">
         <Droppable droppableId="answerLists" direction="horizontal">
@@ -53,15 +55,16 @@ export default function DropZone(props: any) {
               className="drag-wrapper"
             >
               {answerArray.map((item: any, i: number) => {
-                return (
-                  <DraggableAnswers
-                    key={i}
-                    answerArray={answerArray}
-                    answerContent={item.content}
-                    groupId={item.groupId}
-                    index={i}
-                  />
-                );
+                if (answerArray[i])
+                  return (
+                    <DraggableAnswers
+                      key={i}
+                      answerArray={answerArray}
+                      answerContent={item.content}
+                      groupId={item.groupId}
+                      index={i}
+                    />
+                  );
               })}
               {provided.placeholder}
             </div>

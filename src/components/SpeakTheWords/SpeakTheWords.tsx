@@ -95,7 +95,9 @@ const SpeakTheWords = (props: any) => {
             </div>
           ) : (
             <div>
-              <p id="SPEECH_BASIC" className="final-transcript">{finalTranscript}</p>
+              <p id="SPEECH_BASIC" className="final-transcript">
+                {finalTranscript}
+              </p>
             </div>
           )}
         </div>

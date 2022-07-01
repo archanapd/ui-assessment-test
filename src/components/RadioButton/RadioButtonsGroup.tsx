@@ -54,7 +54,7 @@ export default function RadioButtonsGroup(props: any) {
 
   const htmlParserTransform = (node: any) => {
     if (node.type == 'tag' && node.name == 'video') {
-      const randomKey = Math.floor((Math.random() * 1000) + 1);
+      const randomKey = Math.floor(Math.random() * 1000 + 1);
       const nodeVal = (
         <VideoPlayer key={randomKey} url={node.children[0].attribs.src} />
       );

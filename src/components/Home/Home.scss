@@ -428,6 +428,9 @@ audio::-webkit-media-controls-enclosure {
 p {
   margin: 0;
 }
+.preview-wrapper button {
+  color: white;
+}
 .txt-time-limit {
   font-family: 'Gotham Rounded' !important;
   font-size: 14px;
@@ -445,18 +448,5 @@ p {
     display: inline-block;
     margin-left: 8px;
     vertical-align: middle;
-  }
-}
-.dialog-time-limit {
-  max-width: 382px;
-  margin: 0 auto;
-  .MuiPaper-elevation {
-    width: 100%;
-  }
-  .dialog-btm  {
-    margin-bottom: 20px;
-  }
-  .btn.btn-primary {
-    max-width: 171px;
   }
 }

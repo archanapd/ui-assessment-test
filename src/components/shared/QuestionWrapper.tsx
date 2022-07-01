@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Container, Grid, Box, AppBar,  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton } from '@mui/material';
+import {
+  Container,
+  Grid,
+  Box,
+  AppBar,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton
+} from '@mui/material';
 import { callAPI } from '../../helpers/api';
 import CssBaseline from '@mui/material/CssBaseline';
 import RadioButtonsGroup from 'components/RadioButton/RadioButtonsGroup';
@@ -17,7 +28,7 @@ import FillInTheSelect from 'components/FillInTheSelect/FillInTheSelect';
 import DragAndDrop from 'components/DragAndDrop/DragAndDrop';
 import timeOutImg from 'assets/red-exclamationmark.svg';
 import CloseIcon from '@mui/icons-material/Close';
-
+import Countdown from 'react-countdown';
 
 const QuestionWrapper = () => {
   let navigate = useNavigate();
@@ -30,7 +41,6 @@ const QuestionWrapper = () => {
   );
   const userSessionId = initSettings[0].userSessionId;
   const numberOfQuestions = initSettings[0].numberOfQuestions;
-
 
   let [questions, setQuestion] = useState<any[]>([]);
   const [error, setError] = React.useState({});
@@ -51,7 +61,6 @@ const QuestionWrapper = () => {
       },
       error: (error) => setError(error)
     });
-
   };
 
   localStorage.setItem('savedQuestions', JSON.stringify(questions));
@@ -193,6 +202,19 @@ const QuestionWrapper = () => {
     setOpen(true);
   };
 
+  const renderer = ({ hours, minutes, seconds, completed }: any) => {
+    if (completed) {
+      showSubmitModal();
+    } else {
+      // Render a countdown
+      return (
+        <span>
+          {hours}:{minutes}:{seconds}
+        </span>
+      );
+    }
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -203,7 +225,11 @@ const QuestionWrapper = () => {
       </ThemeProvider>
       <Container maxWidth="sm">
         <Box sx={{ bgcolor: 'white' }} className="question-wrapper">
-          <h3 className='txt-time-limit' onClick={showSubmitModal}>Time Limit <span>29:54</span></h3>
+          <h3 className="txt-time-limit" onClick={showSubmitModal}>
+            Time Limit{' '}
+            {/* <Countdown date={Date.now() + 5000} renderer={renderer} /> */}
+            <span>00:00:00</span>
+          </h3>
           <p className="qst-title">
             <b>Question {questionId}</b>
           </p>
@@ -257,38 +283,36 @@ const QuestionWrapper = () => {
           </Grid>
         </Box>
         <Dialog
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-              className='dialog-time-limit'
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          className="dialog-time-limit"
+        >
+          <DialogTitle id="alert-dialog-title">
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              sx={{
+                position: 'absolute',
+                right: 8,
+                top: 8,
+                color: '#DDDDEA'
+              }}
             >
-              <DialogTitle id="alert-dialog-title">
-                <IconButton
-                  aria-label="close"
-                  onClick={handleClose}
-                  sx={{
-                    position: 'absolute',
-                    right: 8,
-                    top: 8,
-                    color: '#DDDDEA'
-                  }}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </DialogTitle>
-              <DialogContent className="dialog-content">
-                <img src={timeOutImg} alt="" />
-                <DialogContentText id="alert-dialog-description">
-                Your time is over
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions className="dialog-btm">
-                <Button  autoFocus>
-                Continue
-                </Button>
-              </DialogActions>
-            </Dialog>
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+          <DialogContent className="dialog-content">
+            <img src={timeOutImg} alt="" />
+            <DialogContentText id="alert-dialog-description">
+              Your time is over
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions className="dialog-btm">
+            <Button autoFocus>Continue</Button>
+          </DialogActions>
+        </Dialog>
       </Container>
       <footer className="page-footer pt-4 pb-5">
         <Container className="mb-4" maxWidth="sm">
