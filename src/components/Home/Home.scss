@@ -450,3 +450,11 @@ p {
     vertical-align: middle;
   }
 }
+.dialog-success {
+  .dialog-content {
+    width: 300px;
+  }
+  .dialog-btm .btn {
+    max-width: 100px;
+  }
+}

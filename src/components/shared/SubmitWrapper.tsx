@@ -51,9 +51,11 @@ const SubmitWrapper = () => {
   };
 
   const [open, setOpen] = useState(false);
+  const [suOpen, setSuOpen] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
+    setSuOpen(false);
   };
 
   const hideModalAndSubmit = () => {
@@ -70,12 +72,16 @@ const SubmitWrapper = () => {
     setOpen(true);
   };
 
+  const showSucsessModal = () => {
+    setSuOpen(true);
+  };
+
   const submitAnswers = () => {
     callAPI({
       method: 'get',
       resource: BASE_URL + `/session/submit/${userSessionId}`,
       success: (data) => {
-        alert('Success');
+        showSucsessModal();
       },
       error: (error) => console.log(error)
     });
@@ -240,6 +246,41 @@ const SubmitWrapper = () => {
                 </Button>
                 <Button onClick={hideModalAndSubmit} autoFocus>
                   Submit
+                </Button>
+              </DialogActions>
+            </Dialog>
+
+            {/* Dialog - Submitted */}
+            <Dialog
+              open={suOpen}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              className="dialog-success"
+            >
+              <DialogTitle id="alert-dialog-title">
+                <IconButton
+                  aria-label="close"
+                  onClick={handleClose}
+                  sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                    color: '#DDDDEA'
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogTitle>
+              <DialogContent className="dialog-content">
+                <img src={greenSuccess} alt="" />
+                <DialogContentText id="alert-dialog-description">
+                Successfully Submitted!
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions className="dialog-btm">
+                <Button onClick={handleClose}>
+                  Ok
                 </Button>
               </DialogActions>
             </Dialog>
