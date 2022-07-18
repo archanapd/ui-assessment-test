@@ -28,6 +28,8 @@ import FillInTheBlanks from 'components/FillInTheBlanks/FillInTheBlanks';
 import FillInTheSelect from 'components/FillInTheSelect/FillInTheSelect';
 import SpeakTheWords from 'components/SpeakTheWords/SpeakTheWords';
 import DragAndDrop from 'components/DragAndDrop/DragAndDrop';
+import timeOutImg from 'assets/yellow-exclamationmark.svg';
+import fileSubmittedImg from 'assets/green-file-filled.svg';
 
 const SubmitWrapper = () => {
   const initSettings: any = JSON.parse(
@@ -284,6 +286,79 @@ const SubmitWrapper = () => {
                 </Button>
               </DialogActions>
             </Dialog>
+
+            {/* Dialog Time alert */}
+            {/* <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                <IconButton
+                  aria-label="close"
+                  onClick={handleClose}
+                  sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                    color: '#DDDDEA'
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogTitle>
+              <DialogContent className="dialog-content">
+                <img src={timeOut} alt="" />
+                <DialogContentText id="alert-dialog-description">
+                Hurry up, you just have 2 Minutes left <br />to finish this assessment :)
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions className="dialog-btm">
+                <Button onClick={hideModalAndSubmit} autoFocus>
+                  Okay
+                </Button>
+              </DialogActions>
+            </Dialog> */}
+
+
+            {/* Dialog Submit notify */}
+            {/* <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                <IconButton
+                  aria-label="close"
+                  onClick={handleClose}
+                  sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                    color: '#DDDDEA'
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogTitle>
+              <DialogContent className="dialog-content">
+                <img src={fileSubmittedImg} alt="" />
+                <DialogContentText id="alert-dialog-description">
+                Hi, you have submitted this <br/> assessment! 
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions className="dialog-btm">
+                <Button onClick={hideModalAndSubmit} autoFocus>
+                  Back
+                </Button>
+              </DialogActions>
+            </Dialog> */}
+
+
+
+
           </Grid>
         </Container>
       </footer>

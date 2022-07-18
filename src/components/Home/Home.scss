@@ -414,10 +414,11 @@ audio::-webkit-media-controls-enclosure {
 }
 .dialog-btm {
   justify-content: center !important;
-  padding: 0 1rem 1rem !important;
+  padding: 0 1rem 1.8rem 1rem !important;
   .btn {
     flex: 1;
     min-height: 48px;
+    max-width: 171px;
     &-secondary {
       background-color: #fff;
       color: $green;
