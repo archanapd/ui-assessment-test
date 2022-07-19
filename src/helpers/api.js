@@ -2,7 +2,7 @@ import axios from 'axios';
 
 let axiosInstance = axios.create({
   headers: {
-    Authorization: ''
+    Authorization: '1222AR'
   }
 });
 
@@ -12,7 +12,7 @@ export const callAPI = ({
   data = {},
   success = (data) => data,
   error = (data) => data,
-  headers = { 'Content-Type': 'application/json' }
+  headers = { 'Content-Type': 'application/json'}
 }) => {
   let axiosInstanceGenerator =
     method === 'delete'

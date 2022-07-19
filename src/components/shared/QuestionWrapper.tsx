@@ -29,6 +29,8 @@ import DragAndDrop from 'components/DragAndDrop/DragAndDrop';
 import timeOutImg from 'assets/red-exclamationmark.svg';
 import CloseIcon from '@mui/icons-material/Close';
 import Countdown from 'react-countdown';
+import timeOutYellow from 'assets/yellow-exclamationmark.svg';
+import fileSubmittedImg from 'assets/green-file-filled.svg';
 
 const QuestionWrapper = () => {
   let navigate = useNavigate();
@@ -42,8 +44,10 @@ const QuestionWrapper = () => {
   const userSessionId = initSettings[0].userSessionId;
   const numberOfQuestions = initSettings[0].numberOfQuestions;
 
-  let [questions, setQuestion] = useState<any[]>([]);
+  let [questions, setQuestion] = React.useState<any[]>([]);
   const [error, setError] = React.useState({});
+
+  console.log(questions)
 
   const getQuestions = () => {
     const questionAPI =
@@ -113,10 +117,18 @@ const QuestionWrapper = () => {
       currentQuestion.answerGroups.map((data: any, i: number) => {
         data.answers.map((item: any) => {
           if (item.selected === true) {
-            bodyJson.answers.push({
-              answerId: item.id,
-              groupId: data.groupId
-            });
+            if (currentQuestion.type === 'FILL_IN_THE_BLANK_DRAG') {
+              bodyJson.answers.push({
+                answerId: item.id,
+                groupId: item.selectedGroupId
+              });
+              console.log('bodyJson.answers', bodyJson.answers);
+            } else {
+              bodyJson.answers.push({
+                answerId: item.id,
+                groupId: data.groupId
+              });
+            }
           }
         });
       });
@@ -196,15 +208,34 @@ const QuestionWrapper = () => {
 
   const handleClose = () => {
     setOpen(false);
+    //submitAnswers();
+  };
+
+  const hideModalAndSubmit = () => {
+    setOpen(false);
+    submitAnswers();
   };
 
   const showSubmitModal = () => {
     setOpen(true);
   };
 
+  const submitAnswers = () => {
+    callAPI({
+      method: 'get',
+      resource: BASE_URL + `/session/submit/${userSessionId}`,
+      success: (data) => {
+        navigate('/');
+      },
+      error: (error) => console.log(error)
+    });
+  };
+
   const renderer = ({ hours, minutes, seconds, completed }: any) => {
+    console.log(hours, minutes, seconds)
     if (completed) {
-      showSubmitModal();
+      //showSubmitModal();
+      //navigate('/submit');
     } else {
       // Render a countdown
       return (
@@ -225,11 +256,10 @@ const QuestionWrapper = () => {
       </ThemeProvider>
       <Container maxWidth="sm">
         <Box sx={{ bgcolor: 'white' }} className="question-wrapper">
-          <h3 className="txt-time-limit" onClick={showSubmitModal}>
+          {/* {questions[questionIdRef - 1] && <h3 className="txt-time-limit" onClick={showSubmitModal}>
             Time Limit{' '}
-            {/* <Countdown date={Date.now() + 5000} renderer={renderer} /> */}
-            <span>00:00:00</span>
-          </h3>
+            <Countdown date={new Date(21)} renderer={renderer} />
+          </h3>} */}
           <p className="qst-title">
             <b>Question {questionId}</b>
           </p>
@@ -284,7 +314,6 @@ const QuestionWrapper = () => {
         </Box>
         <Dialog
           open={open}
-          onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           className="dialog-time-limit"
@@ -310,9 +339,77 @@ const QuestionWrapper = () => {
             </DialogContentText>
           </DialogContent>
           <DialogActions className="dialog-btm">
-            <Button autoFocus>Continue</Button>
+            <Button autoFocus onClick={handleClose}>Continue</Button>
           </DialogActions>
         </Dialog>
+        {/* Dialog Time alert */}
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                <IconButton
+                  aria-label="close"
+                  onClick={handleClose}
+                  sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                    color: '#DDDDEA'
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogTitle>
+              <DialogContent className="dialog-content">
+                <img src={timeOutYellow} alt="" />
+                <DialogContentText id="alert-dialog-description">
+                Hurry up, you just have 2 Minutes left <br />to finish this assessment :)
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions className="dialog-btm">
+                <Button onClick={hideModalAndSubmit} autoFocus>
+                  Okay
+                </Button>
+              </DialogActions>
+            </Dialog>
+
+
+            {/* Dialog Submit notify */}
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                <IconButton
+                  aria-label="close"
+                  onClick={handleClose}
+                  sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                    color: '#DDDDEA'
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogTitle>
+              <DialogContent className="dialog-content">
+                <img src={fileSubmittedImg} alt="" />
+                <DialogContentText id="alert-dialog-description">
+                Hi, you have submitted this <br/> assessment! 
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions className="dialog-btm">
+                <Button onClick={hideModalAndSubmit} autoFocus>
+                  Back
+                </Button>
+              </DialogActions>
+            </Dialog>
       </Container>
       <footer className="page-footer pt-4 pb-5">
         <Container className="mb-4" maxWidth="sm">

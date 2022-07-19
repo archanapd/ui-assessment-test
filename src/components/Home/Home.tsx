@@ -18,14 +18,14 @@ function App() {
     navigate('/questions/' + 1, {});
   };
   const assessmentData = {
-    assessmentLink: '7354cbd5-c49f-49ad-a188-a411b6e77777',
-    userId: 'P1222'
+    assessmentLink: 'e948440e-66d4-4498-a873-e95957f4df0f',
+    userId: 'user0012'
   };
   const getAssessmentSettings = () => {
     callAPI({
       method: 'post',
       data: assessmentData,
-      resource: BASE_URL + '/start',
+      resource: BASE_URL + '/assessment/start',
       success: (data) => {
         updateInitSettings([...initSettings, data]);
       },

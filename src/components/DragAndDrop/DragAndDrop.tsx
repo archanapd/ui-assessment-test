@@ -7,14 +7,17 @@ import DropZone from './DropZone';
 
 export default function DragAndDrop(props: any) {
   const question = props.options;
-  const answerArray: any[] = [];
+  let answerArray: any[] = [];
   const questionArray: any = [];
-  const droppedValueArray: any = [];
+  let droppedValueArray: any = [];
 
   question.answerGroups.map((item: any, i: number) => {
     if (item.answers[0].selected) {
       // droppedValueArray.push(item.answers[0]);
-      droppedValueArray[i] = item.answers[0];
+      let groupId = item.answers[0].selectedGroupId ? item.answers[0].selectedGroupId : item.groupId;
+      let index = question.answerGroupRef.indexOf(groupId);
+      droppedValueArray[index] = item.answers[0];
+      // droppedValueArray[i] = item.answers[0];
     } else {
       answerArray.push(item.answers[0]);
     }
@@ -54,13 +57,25 @@ export default function DragAndDrop(props: any) {
     ) {
       const removed = tempAnswerArray[startIndex];
       const endIndex = Number(destination.droppableId);
-      question.answerGroups[endIndex].answers[0] = { ...removed };
-      question.answerGroups[endIndex].answers[0].selected = true;
+
+      // question.answerGroups[endIndex].answers[0] = { ...removed };
+      // question.answerGroups[startIndex].answers[0] = { ...removed };
+
+      let index = question.answerGroupRef.indexOf(removed.groupId);
+      question.answerGroups[index].answers[0].selected = true;
+      question.answerGroups[index].answers[0].selectedGroupId =  question.answerGroupRef[endIndex];
+
+      console.log('destination',  destination);
+      console.log('index',  index);
+      console.log(' question.answerGroups',  question.answerGroups);
+
+      // removed.selected = true;
+      // removed.selectedGroupId = question.answerGroupRef[endIndex];
 
       // when dropping the answers on the right field selected field should not be switched again.
-      if (removed.groupId !== question.answerGroups[endIndex].groupId) {
-        removed.selected = false;
-      }
+      // if (removed.groupId !== question.answerGroups[endIndex].groupId) {
+      //   removed.selected = false;
+      // }
 
       tempDropArray[endIndex] = removed;
       delete tempAnswerArray[startIndex];
@@ -75,8 +90,12 @@ export default function DragAndDrop(props: any) {
     if (destination.droppableId === 'answerLists') {
       const removed = tempDropArray[startIndex];
 
-      question.answerGroups[startIndex].answers[0] = { ...removed };
-      question.answerGroups[startIndex].answers[0].selected = false;
+      // question.answerGroups[startIndex].answers[0] = { ...removed };
+      // question.answerGroups[startIndex].answers[0].selected = false;
+
+      let index = question.answerGroupRef.indexOf(removed.groupId);
+      question.answerGroups[index].answers[0].selected = false;
+      question.answerGroups[index].answers[0].selectedGroupId =  null;
 
       removed.selected = false;
       tempAnswerArray.splice(startIndex, 0, removed);
@@ -96,11 +115,20 @@ export default function DragAndDrop(props: any) {
       const removed = tempDropArray[startIndex];
       delete tempDropArray[startIndex];
       tempDropArray[destination.droppableId] = removed;
+      console.log('startIndex', startIndex);
+      console.log('destination.droppableId', destination.droppableId);
 
-      question.answerGroups[destination.droppableId].answers[0] = {
-        ...removed
-      };
-      question.answerGroups[destination.droppableId].answers[0].selected = true;
+      let index = question.answerGroupRef.indexOf(removed.groupId);
+      question.answerGroups[index].answers[0].selected = true;
+      question.answerGroups[index].answers[0].selectedGroupId =  question.answerGroupRef[destination.droppableId];
+
+      // question.answerGroups[startIndex].answers[0].selected = false;
+      // question.answerGroups[startIndex].answers[0].selectedGroupId =  null;
+
+      // question.answerGroups[destination.droppableId].answers[0] = {
+      //   ...removed
+      // };
+      // question.answerGroups[destination.droppableId].answers[0].selected = true;
 
       setData({ ...data, droppedValueArray: tempDropArray });
       updateAnswers(tempDropArray);
@@ -108,20 +136,16 @@ export default function DragAndDrop(props: any) {
   };
 
   useEffect(() => {
-    // const question = props.options;
-    // let tempDropArray: any[] = [];
-    // question.answerGroups.map((answerGroup: any) => {
-    //   if (answerGroup.answers[0].selected) {
-    //     tempDropArray.push(answerGroup.answers[0]);
+    // question.answerGroups.map((item: any, i: number) => {
+    //   if (item.answers[0].selected) {
+    //     // droppedValueArray.push(item.answers[0]);
+    //     let groupId = item.answers[0].selectedGroupId ? item.answers[0].selectedGroupId : item.groupId;
+    //     let index = question.answerGroupRef.indexOf(groupId);
+    //     droppedValueArray[index] = item.answers[0];
+    //     // droppedValueArray[i] = item.answers[0];
+    //   } else {
+    //     answerArray.push(item.answers[0]);
     //   }
-    // });
-    // console.log(tempDropArray);
-    // setData({
-    //   ...data,
-    //   droppedValueArray: tempDropArray
-    // });
-    // question.answerGroups.map((answerGroup: any) => {
-    //   answerGroup.answers[0].selected = false;
     // });
   }, [props]);
 
