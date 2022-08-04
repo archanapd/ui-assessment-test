@@ -1,0 +1,81 @@
+{
+  "module": {
+    "number": 1,
+    "name": "Mathematics",
+    "questions": 30,
+    "revision": "2017-08-13"
+  },
+  "questions": [
+    {
+      "type": "radio",
+      "image": "https://h5p.org/sites/default/files/h5p/content/713/images/file-5885c23902f31.jpg",
+      "audio": "url",
+      "title": "What color does the blackcurrant berry actually have?",
+      "options": [
+        {
+          "value": "Very dark Purple"
+        },
+        {
+          "value": "Blue"
+        },
+        {
+          "value": "Black"
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "image": "https://h5p.org/sites/default/files/h5p/content/620/images/image-568b75eb0dded.jpg",
+      "audio": "url",
+      "label": "Checkbox demo",
+      "title": "What color does the strawberry actually have?",
+      "options": [
+        {
+          "value": "Bright red"
+        },
+        {
+          "value": "Pink"
+        },
+        {
+          "value": "Blue"
+        }
+      ]
+    },
+    {
+      "type": "fill-text",
+      "image": "https://www.lifeinnorway.net/wp-content/uploads/2015/08/wild-berries-norway.jpg",
+      "audio": "url",
+      "title": "Insert the missing words in this text about berries found in Norwegian forests and mountainous regions.",
+      "sentence": "<p>Bilberries (Vaccinium myrtillus), also known as berries are * edible, nearly black berries found in nutrient-poor soils.</p> <p> * berries (Rubus chamaemorus) are edible orange berries similar to raspberries or blackberries found in alpine and arctic tundra.</p> <p>Redcurrant (Ribes rubrum) are red translucent berries with a diameter of 8~10 mm, and are closely related to its black colored relative * currant.</p>"
+    },
+    {
+      "type": "fill-select",
+      "image": "https://www.lifeinnorway.net/wp-content/uploads/2015/08/wild-berries-norway.jpg",
+      "audio": "url",
+      "title": "Insert the missing words in this text about berries found in Norwegian forests and mountainous regions.",
+      "sentence": "<p>Bilberries (Vaccinium myrtillus), also known as berries are * edible, nearly black berries found in nutrient-poor soils.</p> <p> * berries (Rubus chamaemorus) are edible orange berries similar to raspberries or blackberries found in alpine and arctic tundra.</p> <p>Redcurrant (Ribes rubrum) are red translucent berries with a diameter of 8~10 mm, and are closely related to its black colored relative * currant.</p>",
+      "options": {
+        "books": [
+          {
+            "title": "Professional JavaScript",
+            "authors": ["Nicholas C. Zakas"],
+            "edition": 3,
+            "year": 2011
+          },
+          {
+            "title": "Professional JavaScript",
+            "authors": ["Nicholas C.Zakas"],
+            "edition": 2,
+            "year": 2009
+          },
+          {
+            "title": "Professional Ajax",
+            "authors": ["Nicholas C. Zakas", "Jeremy McPeak", "Joe Fawcett"],
+            "edition": 2,
+            "year": 2008
+          }
+        ]
+      }
+    }
+  ]
+}

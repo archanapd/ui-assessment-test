@@ -1,0 +1,73 @@
+.cake-vdo-rail {
+  padding-bottom: 0 !important;
+  .MuiSlider-rail {
+    color: #ddddea;
+  }
+  .MuiSlider-thumb {
+    opacity: 0;
+  }
+}
+.cake-vdo-row {
+  background-color: #f5f4f880;
+  video {
+    margin-bottom: 0;
+  }
+}
+.vdo-time-txt {
+  font-family: "Gotham Rounded" !important;
+  font-size: 8px !important;
+
+  @media screen and (min-width: 500px) and (max-width: 991px){
+    font-size: 10px !important;
+  }
+  @media screen and (min-width: 992px) {
+    font-size: 12px !important;
+  }
+}
+.vdo-control-block {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.vdo-pop-block {
+  .MuiTypography-root {
+    @extend .vdo-time-txt;
+
+  }
+  @media screen and (max-width: 991px) {
+    width: 30px;
+    .MuiButton-text {
+      min-width: unset;
+    }
+  }
+}
+.vdo-player-wrapper {
+  background-color: rgba(25, 25, 27, 0.5);
+  color: white;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(100% - 7px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & + div + div .vdo-box {
+    display: none;
+  }
+}
+.cake-vdo-controls-box {
+  .MuiSvgIcon-root {
+    @media screen and (max-width: 991px) {
+      font-size: 18px;
+    }
+  }
+}
+.audio-label-class {
+  img {
+    margin-bottom: 8px !important;
+  }
+}

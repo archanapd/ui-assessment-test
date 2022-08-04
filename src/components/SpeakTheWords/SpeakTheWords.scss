@@ -1,0 +1,76 @@
+strong {
+  font-family: "Gotham Rounded" !important;
+}
+.txt-record {
+  color: #ec7f01;
+  font-size: 12px;
+  padding-bottom: 8px;
+  text-align: center;
+  width: 100%;
+
+  margin-bottom: 0;
+}
+.rcd-block {
+  min-height: 160px;
+  margin-bottom: 1rem;
+  display: flex;
+  width: 100%;
+  align-items: end;
+  border-bottom: 1px solid #b9b9cb;
+  img {
+    width: 210px;
+    object-fit: cover;
+    margin: 0 auto;
+    height: 70px;
+    margin-bottom: 1rem;
+  }
+  &--img {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+.off-record {
+  color: transparent;
+}
+.record-btn-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span,
+  button {
+    flex: 1;
+  }
+  button {
+    margin-left: 10px;
+    @media screen and (max-width: 500px) {
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+  }
+}
+.ico-green-record {
+  color: #98c93c;
+  white-space: nowrap;
+  @media screen and (max-width: 500px) {
+    font-size: 12px;
+  }
+  svg {
+    margin-right: 9px;    
+    @media screen and (max-width: 500px) {
+      font-size: 15px;
+    }
+  }
+}
+
+.rcd-block-less-height {
+  min-height: 20px;
+  display: flex;
+  width: 60%;
+  align-items: end;
+  border-bottom: 1px solid #b9b9cb;
+}
+.final-transcript {
+  color: #98c93c;
+  font-family: 'Gotham Rounded' !important;
+}

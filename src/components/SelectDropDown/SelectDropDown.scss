@@ -1,0 +1,53 @@
+.select-wrapper {
+  display: inline-block;
+  margin-bottom: 10px;
+  &--box {
+    padding: 0 10px;
+    position: relative;
+    FormControl {
+      border: 1px solid #98C93C;
+      outline: none;
+      font-family: 'Gotham Rounded' !important;
+      color: #98c93c;
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 4px 10px;
+      min-width: 122px;
+    }
+    Select {
+      border: 1px solid #98C93C;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      margin-top: 10px;
+      padding: 0;
+      list-style: none;
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 122px;
+      li {
+        color: #8F8E98;
+        padding: 6px 10px;
+        font-size: 14px;
+        &:active,
+        &:focus,
+        &:hover,
+        &[aria-selected='true'] {
+          cursor: pointer;
+          color: #fff;
+          background: #98C93C;
+          font-family: 'Gotham Rounded' !important;
+        }
+      }
+      &.show {
+        display: block;
+        z-index: 1;
+      }
+    }
+  }
+
+}
+button:hover {
+  cursor: pointer;
+}
+

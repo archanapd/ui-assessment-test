@@ -1,0 +1,63 @@
+$green: #98c93c;
+
+.drop-options-wrapper {
+  min-width: 138px;
+  height: 37px;
+  border-radius: 4px;
+  background-color: #ddddea;
+  display: inline-flex;
+  vertical-align: middle;
+  margin: 0 5px 11px 0;
+  div {
+    height: 100%;
+    width: 100%;
+  }
+  .list {
+    font-family: "Gotham Rounded" !important;
+    text-align: center;
+    color: $green;
+    border: 1px solid $green;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grabbing;
+  }
+}
+.drag-wrapper {
+  display: inline-flex;
+  .list {
+    min-width: 135px;
+    height: 37px;
+    color: $green;
+    padding: 7px 38px;
+    border: 1px solid $green;
+    font-size: 15px;
+    font-weight: bolder;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin: 0 7px 4px 0;
+    font-family: "Gotham Rounded" !important;
+    background-color: #fff;
+    cursor: grabbing;
+  }
+}
+.drop-zone {
+  border-top: 1px solid #b9b9cb;
+  margin-top: 1rem;
+  padding-top: 11px;
+  .drag-wrapper {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+.drag-quest-list {
+  &>div {
+    margin-bottom: 12px;
+  }
+}
