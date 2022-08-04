@@ -1,6 +1,7 @@
 .select-wrapper {
   display: inline-block;
   margin-bottom: 10px;
+  vertical-align: middle;
   &--box {
     padding: 0 10px;
     position: relative;
@@ -45,9 +46,47 @@
       }
     }
   }
+  .MuiSelect-select {
+    font-weight: bold;
+    font-family: 'Gotham Rounded' !important;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #98C93C;
+    legend {
+      display: none;
+    }
+  }
+  .MuiSvgIcon-root {
+    color: #98C93C;
+  }
 
 }
 button:hover {
   cursor: pointer;
 }
-
+.MuiMenu-list {
+  border: 1px solid #98C93C;
+  border-radius: 4px;
+  li {
+    color: #8F8E98;
+    &.Mui-selected {
+      background-color: #98C93C;
+      font-family: 'Gotham Rounded' !important;
+      color: #fff;
+    }
+  }
+}
+.simple-select-dropdown {
+  &:hover {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #98C93C !important;
+    }
+  }
+  &.Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #98C93C !important;
+    }
+  }
+}
