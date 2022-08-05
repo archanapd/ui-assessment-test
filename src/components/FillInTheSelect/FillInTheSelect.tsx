@@ -39,12 +39,12 @@ export default function FillInTheSelect(props: any) {
       let id = node.attribs.id;
       let options = props.options.answerGroups[id].answers;
       let newArray = options.slice();
-      newArray.unshift({
-        id: null,
-        content: 'Your answer',
-        groupId: props.options.answerGroups[id].groupId,
-        selected: false
-      });
+      // newArray.unshift({
+      //   id: null,
+      //   content: 'Your answer',
+      //   groupId: props.options.answerGroups[id].groupId,
+      //   selected: false
+      // });
 
       let params = {
         groupId: props.options.answerGroups[id].groupId,
