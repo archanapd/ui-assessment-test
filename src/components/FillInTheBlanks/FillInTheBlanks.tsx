@@ -57,7 +57,7 @@ export default function FillInTheBlanks(this: any, props: any) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg" className={props.disabled ? 'is-content-disabled' : ''}>
+      <Container maxWidth="lg" className={props.disabled ? 'is-content-disabled fillbox' : ''}>
       {ReactHtmlParser(formatLabel(props.options), {
           transform: htmlParserTransform
         })}
