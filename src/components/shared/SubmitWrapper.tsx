@@ -112,7 +112,7 @@ const SubmitWrapper = () => {
     <Box>
       <ThemeProvider theme={darkTheme}>
         <AppBar className="headerbar" color="primary">
-          {<img className="inner-header" src={logo}></img>}
+          {<img alt="" className="inner-header" src={logo}></img>}
         </AppBar>
       </ThemeProvider>
       <Container maxWidth="sm">

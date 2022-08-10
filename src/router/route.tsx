@@ -3,6 +3,7 @@ import QuestionWrapper from 'components/shared/QuestionWrapper';
 import SubmitWrapper from 'components/shared/SubmitWrapper';
 import PreviewWrapper from 'components/shared/PreviewWrapper';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PageNotFound from 'components/shared/PageNotFound';
 
 const AppRouter = (props: any) => {
   return (
@@ -13,14 +14,7 @@ const AppRouter = (props: any) => {
         <Route path="/questions/:questionId" element={<QuestionWrapper />} />
         <Route path="/submit" element={<SubmitWrapper />} />
         <Route path="/preview/:questionId" element={<PreviewWrapper />} />
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: '1rem' }}>
-              <p>There's nothing here yet!</p>
-            </main>
-          }
-        />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

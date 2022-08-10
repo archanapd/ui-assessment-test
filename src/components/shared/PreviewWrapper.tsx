@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Grid, Box, AppBar } from '@mui/material';
-import { useParams } from 'react-router-dom';
-import { callAPI } from '../../helpers/api';
+import { useParams, useLocation } from 'react-router-dom';
 import { BASE_URL } from '../../config/apiconfig';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import '../../App.scss';
-import '../Home/Home.scss';
 import RadioButtonsGroup from 'components/RadioButton/RadioButtonsGroup';
 import CheckBoxGroup from 'components/CheckBox/CheckBoxGroup';
 import FillInTheBlanks from 'components/FillInTheBlanks/FillInTheBlanks';
@@ -14,60 +11,19 @@ import FillInTheSelect from 'components/FillInTheSelect/FillInTheSelect';
 import SpeakTheWords from 'components/SpeakTheWords/SpeakTheWords';
 import DragAndDrop from 'components/DragAndDrop/DragAndDrop';
 
+
+import '../../App.scss';
+import '../Home/Home.scss';
+import axios from 'axios';
+
 const PreviewWrapper = () => {
   const { questionId } = useParams<{ questionId: string }>();
+  const [questions, setQuestion] = useState<any[]>([]);
+  const [preview, setPreview] = useState<any[]>([]);
 
-  const questions: any = [{
-    "ref": "62e909982f028176d5260e03",
-    "questionId": "7a19c2c1-8599-41fa-b5e0-6d3fe4f95e31",
-    "version": 1,
-    "skillCompetency": [
-        "General"
-    ],
-    "level": "LOW",
-    "type": "FILL_IN_THE_BLANK_DROPDOWN",
-    "wrongFeedback": "",
-    "correctFeedback": "",
-    "content": "<div>All even numbers are multiples of&nbsp;[S1]</div>",
-    "studyId": 2,
-    "categoryId": null,
-    "levelId": null,
-    "answerGroupRef": [
-        "S1"
-    ],
-    "answerGroups": [
-        {
-            "groupId": "S1",
-            "answers": [
-                {
-                    "id": "62e909982f028176d5260e07",
-                    "content": "3",
-                    "groupId": "S1",
-                    "selectedGroupId": null,
-                    "selected": false
-                },
-                {
-                    "id": "62e909982f028176d5260e08",
-                    "content": "5",
-                    "groupId": "S1",
-                    "selectedGroupId": null,
-                    "selected": false
-                },
-                {
-                    "id": "62e909982f028176d5260e06",
-                    "content": "2",
-                    "groupId": "S1",
-                    "selectedGroupId": null,
-                    "selected": false
-                }
-            ]
-        }
-    ],
-    "createdBy": null,
-    "createdDate": 1659439512176,
-    "createdFor": "rajini@squline.com"
-}];
-
+  let locale = useLocation();
+  const token = sessionStorage.getItem("token") || locale.search.split("?")[1].split("=")[1];
+  
   const darkTheme = createTheme({
     palette: {
       primary: {
@@ -79,24 +35,90 @@ const PreviewWrapper = () => {
     }
   });
 
-  // const getQuestions = () => {
-  //   const questionAPI = BASE_URL + `/question?ref=${questionId}`;
-  //   callAPI({
-  //     method: 'get',
-  //     resource: questionAPI,
-  //     success: (data) => {
-  //       setQuestion([...questions, data]);
-  //     },
-  //     error: (error) => console.log(error)
-  //   });
-  // };
+  const getQuestions = () => {
+    const questionAPI = BASE_URL + `/question?ref=${questionId}`;
+    axios.get(questionAPI, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      setQuestion([...questions, response.data]);
+      callPreviewAPI(response.data);
+    })
+   
+  };
 
+  const callPreviewAPI = (questionRef: any) => {
+    const previewAPI = BASE_URL + `/question/preview/${questionId}`;
+    axios.get(previewAPI, {
+      headers: {
+        'Authorization': `Bearer 543b8aab-2ed9-4581-b23c-defae8bc4dd4`,
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      let correctAnswerOption: any = response.data.answers.filter((item: any) => item.correct === true);
 
+      if (questionRef.type === "SPEECH_BASIC") {
+        questionRef.answerGroups.push({
+          answers : correctAnswerOption
+        })
+      } else if(questionRef.type === "FILL_IN_THE_BLANK_BASIC") {
+        let correctAnswer: [];
+        questionRef.answerGroupRef.forEach((value: any) => {
+          correctAnswer = correctAnswerOption.filter((item: any) => item.groupId === value);
+          questionRef.answerGroups.push({
+            groupId: value,
+            answers: [
+              {
+                content: correctAnswer,
+                groupId: value
+              }
+            ]
+          });
+        });
 
-
+      }
+      else if(questionRef.type === "FILL_IN_THE_BLANK_DROPDOWN") {
+        questionRef.answerGroups.forEach((value: any) => {
+          value.answers.forEach((ans: any, j:number) => {
+            correctAnswerOption.forEach((correct: any, k:number) => {
+              if (ans.id === correct.id) {
+                ans.selected = true;
+              }
+            })
+          })
+        });
+      }
+      else if(questionRef.type === "FILL_IN_THE_BLANK_DRAG") {
+        questionRef.answerGroups.forEach((value: any) => {
+          value.answers.forEach((ans: any, j:number) => {
+            correctAnswerOption.forEach((correct: any, k:number) => {
+              if (ans.id === correct.id) {
+                ans.selected = true;
+                ans.selectedGroupId = correct.groupId;
+              }
+            })
+          })
+        });
+      }
+      else {
+        questionRef.answerGroups[0].answers.forEach((value: any) => {
+          correctAnswerOption.forEach((correct: any, j:number) => {
+            if (value.id === correct.id) {
+              value.selected = true;
+            }
+          })
+        });
+      }
+      setPreview([...preview, correctAnswerOption]);
+      sessionStorage.setItem("token", token);
+      window.history.replaceState({}, document.title, `/preview/${questionId}`);
+    })
+  }
 
   React.useEffect(() => {
-    //getQuestions();
+    getQuestions();
   }, []);
 
   return (
@@ -110,7 +132,7 @@ const PreviewWrapper = () => {
             <h4>Preview your question here</h4>
           </Grid>
           <Container className="answer-value-container p-0">
-            {questions &&
+            {preview.length > 0 && questions &&
               questions.map((question: any, ind: number) => {
                 return (
                   <Grid key={ind} className="answer-values p-0" id={'img-questions-' + (ind + 1)}>

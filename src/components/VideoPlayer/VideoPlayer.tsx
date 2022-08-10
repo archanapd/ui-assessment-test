@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Toolbar, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ReactPlayer from 'react-player';
 import PlayCircleFilledRoundedIcon from '@mui/icons-material/PlayCircleFilledRounded';

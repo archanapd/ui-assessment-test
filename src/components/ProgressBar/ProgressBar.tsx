@@ -2,8 +2,8 @@ import * as React from 'react';
 import MobileStepper from '@mui/material/MobileStepper';
 
 export default function ProgressBar(props: any) {
-  const maxStep:any = props.maxStep;
-  const activeStep:any = props.activeStep;
+  const maxStep: any = props.maxStep;
+  const activeStep: any = props.activeStep;
 
   return (
     <MobileStepper

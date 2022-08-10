@@ -16,7 +16,7 @@ const formatLabel = (mainQuestion: any) => {
 };
 
 const addSpan = (key: any, i: number) => {
-  return '<span key=' + key + ' id=' + i + '></span>';
+  return '<span key=' + i + ' id=' + i + '></span>';
 };
 
 export default function DropZone(props: any) {
@@ -27,7 +27,7 @@ export default function DropZone(props: any) {
       let id = node.attribs.id;
       return (
         <DropZoneItem
-          key={id}
+          key={questionArray[id]}
           index={id}
           answerArray={answerArray}
           groupId={questionArray[id]}

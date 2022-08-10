@@ -40,7 +40,7 @@ body {
     padding: 16px;
     margin-bottom: 1.5rem;
     text-align: left;
-    //pointer-events:none;
+    pointer-events:none;
     &:last-child {
       border-bottom: none;
     }
@@ -249,15 +249,15 @@ audio::-webkit-media-controls-enclosure {
     max-width: 268px;
   }
 }
-.bank_basic {
-  background: #f5f4f8;
-  border: 1px solid #b9b9cb;
+.blank_basic {
+  border: 1px solid green !important;
   border-radius: 4px;
-  padding: 2px 10px;
-  font-family: 'Gotham Rounded' !important;
-  color: #98c93c;
   outline: none;
   margin-bottom: 12px;
+  input {
+    color: #98c93c;
+    font-family: 'Gotham Rounded' !important;
+  }
   &::-webkit-input-placeholder {
     color: #8f8e98;
   }

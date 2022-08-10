@@ -11,6 +11,7 @@ export default function DragAndDrop(props: any) {
   const questionArray: any = [];
   let droppedValueArray: any = [];
 
+
   question.answerGroups.map((item: any, i: number) => {
     if (item.answers[0].selected) {
       let groupId = item.answers[0].selectedGroupId

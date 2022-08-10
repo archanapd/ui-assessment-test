@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Container,
   Grid,
@@ -12,15 +12,15 @@ import {
   DialogTitle,
   IconButton
 } from '@mui/material';
-import {callAPI} from '../../helpers/api';
+import { callAPI } from '../../helpers/api';
 import CssBaseline from '@mui/material/CssBaseline';
 import RadioButtonsGroup from 'components/RadioButton/RadioButtonsGroup';
 import CheckBoxGroup from 'components/CheckBox/CheckBoxGroup';
 import Button from 'react-bootstrap/Button';
 import ReactHtmlParser from 'react-html-parser';
-import {BASE_URL} from '../../config/apiconfig';
+import { BASE_URL } from '../../config/apiconfig';
 import FillInTheBlanks from '../FillInTheBlanks/FillInTheBlanks';
-import {ThemeProvider, createTheme} from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import SpeakTheWords from 'components/SpeakTheWords/SpeakTheWords';
 import '../../App.scss';
 import logo from 'assets/logo-rect.svg';
@@ -36,7 +36,7 @@ import ProgressBar from 'components/ProgressBar/ProgressBar';
 const QuestionWrapper = () => {
   let navigate = useNavigate();
 
-  const {questionId} = useParams<{ questionId: string }>();
+  const { questionId } = useParams<{ questionId: string }>();
   let [questionIdRef, setQuestionIdRef] = React.useState(Number(questionId));
 
   const initSettings: any = JSON.parse(localStorage.getItem('initSettings') || '[]');
@@ -83,8 +83,7 @@ const QuestionWrapper = () => {
             method: 'post',
             data: bodyJson,
             resource: saveAPI,
-            success: () => {
-            },
+            success: () => {},
             error: (error) => console.log(error)
           });
         }
@@ -165,7 +164,7 @@ const QuestionWrapper = () => {
       handleNext();
       navigate('/questions/' + questionIdRef);
     } else {
-      navigate('/submit/', {state: {values: questions}});
+      navigate('/submit/', { state: { values: questions } });
     }
   };
 
@@ -178,13 +177,6 @@ const QuestionWrapper = () => {
     if (question.type === 'FILL_IN_THE_BLANK_BASIC') {
       question.answerGroups.map((item: any) => {
         item.answers[0].content = (document.getElementById(item.groupId) as HTMLInputElement).value;
-      });
-    } else if (question.type === 'FILL_IN_THE_BLANK_DROPDOWN') {
-      question.answerGroups.map((item: any) => {
-        let value = (document.getElementById(item.groupId) as HTMLInputElement).value;
-        item.answers.map((answer: any) => {
-          answer.selected = answer.id === value;
-        });
       });
     } else if (question.type === 'SPEECH_BASIC') {
       question.answerGroups.map((item: any) => {
@@ -241,7 +233,7 @@ const QuestionWrapper = () => {
     }
   };
 
-  const renderer = ({hours, minutes, seconds, completed}: any) => {
+  const renderer = ({ hours, minutes, seconds, completed }: any) => {
     if (completed) {
       setOpenAlertDialog(false);
       localStorage.setItem('assessment-link', '');
@@ -266,56 +258,58 @@ const QuestionWrapper = () => {
 
   return (
     <React.Fragment>
-      <CssBaseline/>
+      <CssBaseline />
       <ThemeProvider theme={darkTheme}>
         <AppBar className="headerbar" color="primary">
           {<img alt="" className="inner-header" src={logo}></img>}
         </AppBar>
       </ThemeProvider>
       <Container maxWidth="sm">
-        <Box sx={{bgcolor: 'white'}} className="question-wrapper">
+        <Box sx={{ bgcolor: 'white' }} className="question-wrapper">
           {questions[questionIdRef - 1] && time && (
             <h3 className="txt-time-limit" onClick={showSubmitModal}>
-              Time Limit <Countdown date={time} renderer={renderer}/>
+              Time Limit <Countdown date={time} renderer={renderer} />
             </h3>
           )}
           <p className="progressbar-title">
             Question {questionId} of {initSettings[0].numberOfQuestions}
             <span className="progress-bar">
-                <ProgressBar minStep={1} maxStep={initSettings[0].numberOfQuestions + 1} activeStep={activeStep}></ProgressBar>
-              </span>
+              <ProgressBar
+                minStep={1}
+                maxStep={initSettings[0].numberOfQuestions + 1}
+                activeStep={activeStep}
+              ></ProgressBar>
+            </span>
           </p>
           <p className="qst-title">
-            <b>
-              Question {questionId}
-            </b>
+            <b>Question {questionId}</b>
           </p>
           <Grid className="qst-choice">
             {questions[questionIdRef - 1] &&
-            questions[questionIdRef - 1].type === 'SINGLE_CHOICE' && (
-              <RadioButtonsGroup options={questions[questionIdRef - 1]} disabled={false}/>
-            )}
+              questions[questionIdRef - 1].type === 'SINGLE_CHOICE' && (
+                <RadioButtonsGroup options={questions[questionIdRef - 1]} disabled={false} />
+              )}
             {questions[questionIdRef - 1] &&
-            questions[questionIdRef - 1].type === 'SPEECH_BASIC' && (
-              <SpeakTheWords options={questions[questionIdRef - 1]} showFullOptions={true}/>
-            )}
+              questions[questionIdRef - 1].type === 'SPEECH_BASIC' && (
+                <SpeakTheWords options={questions[questionIdRef - 1]} showFullOptions={true} />
+              )}
             {questions[questionIdRef - 1] &&
-            ReactHtmlParser(questions[questionIdRef - 1].content) &&
-            questions[questionIdRef - 1].type === 'MULTIPLE_CHOICE' && (
-              <CheckBoxGroup options={questions[questionIdRef - 1]} disabled={false}/>
-            )}
+              ReactHtmlParser(questions[questionIdRef - 1].content) &&
+              questions[questionIdRef - 1].type === 'MULTIPLE_CHOICE' && (
+                <CheckBoxGroup options={questions[questionIdRef - 1]} disabled={false} />
+              )}
             {questions[questionIdRef - 1] &&
-            questions[questionIdRef - 1].type === 'FILL_IN_THE_BLANK_BASIC' && (
-              <FillInTheBlanks options={questions[questionIdRef - 1]} disabled={false}/>
-            )}
+              questions[questionIdRef - 1].type === 'FILL_IN_THE_BLANK_BASIC' && (
+                <FillInTheBlanks options={questions[questionIdRef - 1]} disabled={false} />
+              )}
             {questions[questionIdRef - 1] &&
-            questions[questionIdRef - 1].type === 'FILL_IN_THE_BLANK_DROPDOWN' && (
-              <FillInTheSelect options={questions[questionIdRef - 1]} disabled={false}/>
-            )}
+              questions[questionIdRef - 1].type === 'FILL_IN_THE_BLANK_DROPDOWN' && (
+                <FillInTheSelect options={questions[questionIdRef - 1]} disabled={false} />
+              )}
             {questions[questionIdRef - 1] &&
-            questions[questionIdRef - 1].type === 'FILL_IN_THE_BLANK_DRAG' && (
-              <DragAndDrop options={questions[questionIdRef - 1]} disabled={false}/>
-            )}
+              questions[questionIdRef - 1].type === 'FILL_IN_THE_BLANK_DRAG' && (
+                <DragAndDrop options={questions[questionIdRef - 1]} disabled={false} />
+              )}
           </Grid>
         </Box>
         <Dialog
@@ -335,11 +329,11 @@ const QuestionWrapper = () => {
                 color: '#DDDDEA'
               }}
             >
-              <CloseIcon/>
+              <CloseIcon />
             </IconButton>
           </DialogTitle>
           <DialogContent className="dialog-content">
-            <img src={timeOutImg} alt=""/>
+            <img src={timeOutImg} alt="" />
             <DialogContentText id="alert-dialog-description">Your time is over</DialogContentText>
           </DialogContent>
           <DialogActions className="dialog-btm">
@@ -365,13 +359,13 @@ const QuestionWrapper = () => {
                 color: '#DDDDEA'
               }}
             >
-              <CloseIcon/>
+              <CloseIcon />
             </IconButton>
           </DialogTitle>
           <DialogContent className="dialog-content">
-            <img src={timeOutYellow} alt=""/>
+            <img src={timeOutYellow} alt="" />
             <DialogContentText id="alert-dialog-description">
-              Hurry up, you just have 1 Minute left <br/>
+              Hurry up, you just have 1 Minute left <br />
               to finish this assessment :)
             </DialogContentText>
           </DialogContent>

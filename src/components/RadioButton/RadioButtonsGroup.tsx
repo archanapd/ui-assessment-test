@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Radio from '@mui/material/Radio';
 import ReactHtmlParser from 'react-html-parser';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
-import { Container, Box, Grid } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import './RadioButtonsGroup.scss';

@@ -7,7 +7,7 @@ console.log('Build environment: ', buildEnv);
 
 switch (buildEnv) {
   case 'production':
-    host = 'https://api.cakap.com/';
+    host = 'https://api.cakap.com';
     backendBaseUrl = '';
     break;
   case 'development':

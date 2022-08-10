@@ -79,11 +79,12 @@ function App() {
           }
         ],
         timeBound: true,
-        timeInMinutes: 2,
+        timeInMinutes: 30,
         levelId: '3',
         studyId: '4',
         materialId: '5',
         categoryId: '5',
+        type: "FIXED_QUESTION",
         fixedQuestion: true,
         autoSubmit: false,
         instructions: [
