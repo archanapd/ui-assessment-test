@@ -6,6 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 import VideoPlayer from 'components/VideoPlayer/VideoPlayer';
 
 import './CheckBoxGroup.scss';
+import { Box } from '@mui/material';
 
 export default function CheckBoxGroup(props: any) {
   const [selection, setSelection] = useState<string[]>([]);
@@ -71,26 +72,28 @@ export default function CheckBoxGroup(props: any) {
     setAnswers();
   }, [props]);
   return (
-    <FormControl className={getWrapperClass()}>
-      {ReactHtmlParser(props.options.content, {
-        transform: htmlParserTransform
-      })}
-      {props.options.answerGroups[0].answers.map((item: any, indx: number) => {
-        return (
-          <FormControlLabel
-            className={getLabelClass(item.content) + ' chk-opt-item'}
-            label={getLabel(item)}
-            value={item.content}
-            control={
-              <Checkbox
-                onChange={(event) => handleChange(event, indx)}
-                checked={selection.includes(item.content)}
-              />
-            }
-            key={item.id}
-          />
-        );
-      })}
-    </FormControl>
+    <Box sx={{ bgcolor: 'white' }} className="checkbox-wrapper">
+      <FormControl className={getWrapperClass()}>
+        {ReactHtmlParser(props.options.content, {
+          transform: htmlParserTransform
+        })}
+        {props.options.answerGroups[0].answers.map((item: any, indx: number) => {
+          return (
+            <FormControlLabel
+              className={getLabelClass(item.content) + ' chk-opt-item'}
+              label={getLabel(item)}
+              value={item.content}
+              control={
+                <Checkbox
+                  onChange={(event) => handleChange(event, indx)}
+                  checked={selection.includes(item.content)}
+                />
+              }
+              key={item.id}
+            />
+          );
+        })}
+      </FormControl>
+    </Box>
   );
 }

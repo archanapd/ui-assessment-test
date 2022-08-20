@@ -142,7 +142,7 @@ const SubmitWrapper = () => {
             {questions &&
               questions.map((question: any, ind: number) => {
                 return (
-                  <Grid key={ind} className="answer-values p-0" id={'img-questions-' + (ind + 1)}>
+                  <Grid key={ind} className="qst-choice p-0" id={'img-questions-' + (ind + 1)}>
                     <p className="qst-title" id={'questions' + (ind + 1)}>
                       <b>Question {ind + 1}</b>
                     </p>

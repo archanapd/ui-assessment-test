@@ -2,7 +2,7 @@ import axios from 'axios';
 
 let axiosInstance = axios.create({
   headers: {
-    Authorization: 'Bearer 543b8aab-2ed9-4581-b23c-defae8bc4dd4'
+    Authorization: 'Bearer c5b04972-19f1-4b1a-8496-159dbd3319fa'
   }
 });
 

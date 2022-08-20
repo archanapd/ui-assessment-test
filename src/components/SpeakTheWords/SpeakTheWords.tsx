@@ -15,6 +15,8 @@ const SpeakTheWords = (props: any) => {
   let { transcript, interimTranscript, finalTranscript, resetTranscript, listening } =
     useSpeechRecognition({ commands });
 
+  const id = 'SPEECH_BASIC' + props.options.ref;
+
   useEffect(() => {}, [interimTranscript, finalTranscript]);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const SpeakTheWords = (props: any) => {
 
   const updateAnswers = (question: any) => {
     question.answerGroups.map((item: any) => {
-      (document.getElementById('SPEECH_BASIC') as HTMLInputElement).innerHTML =
+      (document.getElementById('SPEECH_BASIC' + question.ref) as HTMLInputElement).innerHTML =
         item.answers[0].content;
       finalTranscript = item.answers[0].content;
     });
@@ -54,14 +56,15 @@ const SpeakTheWords = (props: any) => {
   }
   const listenContinuously = () => {
     SpeechRecognition.startListening({
-      continuous: true,
-      language: 'en-GB'
+      continuous: true
+      // language: 'en-GB'
     });
   };
 
   const reset = () => {
     resetTranscript();
-    (document.getElementById('SPEECH_BASIC') as HTMLInputElement).innerHTML = '';
+    (document.getElementById('SPEECH_BASIC' + props.options.ref) as HTMLInputElement).innerHTML =
+      '';
   };
   return (
     <div>
@@ -83,7 +86,10 @@ const SpeakTheWords = (props: any) => {
             </div>
           ) : (
             <div>
-              <p id="SPEECH_BASIC" className="final-transcript">
+              {/*<p id="SPEECH_BASIC" className="final-transcript">*/}
+              {/*  {finalTranscript}*/}
+              {/*</p>*/}
+              <p id={id} className="final-transcript">
                 {finalTranscript}
               </p>
             </div>

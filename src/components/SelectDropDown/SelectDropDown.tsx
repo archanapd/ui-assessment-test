@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, {SelectChangeEvent} from '@mui/material/Select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import './SelectDropDown.scss';
@@ -31,14 +31,14 @@ export default function SelectDropDown(props: any) {
         setAge(answer.id);
       }
     });
-    if(!answerSelected) {
+    if (!answerSelected) {
       setAge('Your Answer');
     }
-  }
+  };
 
   return (
     <div className="select-wrapper">
-      <Box sx={{minWidth: 120}} className="select-wrapper--box">
+      <Box sx={{ minWidth: 120 }} className="select-wrapper--box">
         <FormControl fullWidth>
           <Select
             labelId="demo-simple-select-label"
@@ -46,7 +46,7 @@ export default function SelectDropDown(props: any) {
             value={age}
             onChange={handleChange}
             IconComponent={KeyboardArrowDownIcon}
-            style={{width: '150px', color: '#98C93C', borderColor: '#98C93C'}}
+            style={{ width: '150px', color: '#98C93C', borderColor: '#98C93C' }}
             className="simple-select-dropdown"
           >
             <MenuItem value="Your Answer">

@@ -23,7 +23,7 @@ switch (buildEnv) {
     backendBaseUrl = '';
     break;
   default:
-    host = 'https://api-dev.cakap.com/v3/material';
+    host = 'https://api-staging.cakap.com/v3/material';
     backendBaseUrl = '';
     break;
 }

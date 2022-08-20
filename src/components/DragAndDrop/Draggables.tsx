@@ -7,7 +7,7 @@ export default function Draggables(props: any) {
   const { answerContent, groupId, index } = props;
 
   return (
-    <Container>
+    <Container className="draggables-wrapper">
       <Draggable draggableId={`drag` + groupId} index={Number(index)}>
         {(provided) => (
           <div

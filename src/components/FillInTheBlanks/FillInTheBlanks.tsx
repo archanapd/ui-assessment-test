@@ -6,13 +6,11 @@ import InputTextField from 'components/InputTextField/InputTextField';
 
 import './FillInTheBlanks.scss';
 
-
 export default function FillInTheBlanks(this: any, props: any) {
-
   const formatLabel = (question: any) => {
     let queryString: any = question.content;
     question.answerGroupRef.forEach((id: any, i: number) => {
-      queryString = queryString.replace('[' + id + ']', addInput(id, i));
+      queryString = queryString.replace('[' + id + ']', addInput(id + question.ref, i));
     });
     return queryString;
   };
@@ -24,7 +22,17 @@ export default function FillInTheBlanks(this: any, props: any) {
     if (node.type == 'tag' && node.name == 'button') {
       // a tag named a
       let id = node.attribs.id;
-      return <InputTextField key={props.options.answerGroupRef[id]} options={props.options} index={id} itemId={props.options.answerGroupRef[id]} content="Type the answers"/>;
+      let key = node.attribs.key;
+
+      return (
+        <InputTextField
+          key={props.options.answerGroupRef[id]}
+          options={props.options}
+          index={id}
+          itemId={key}
+          content="Type the answers"
+        />
+      );
     }
   };
 
@@ -48,17 +56,24 @@ export default function FillInTheBlanks(this: any, props: any) {
 
   const updateAnswers = (question: any) => {
     question.answerGroups.map((item: any, i: number) => {
-      const value = item.answers[0].content.length > 1 ? item.answers[0].content[0].content : item.answers[0].content
-      const element = document.getElementById(item.groupId) as HTMLInputElement;
-      element.value = value
+      const value =
+        item.answers[0].content.content && item.answers[0].content.content.length >= 1
+          ? item.answers[0].content.content
+          : item.answers[0].content;
+      const element = document.getElementById(item.groupId + question.ref) as HTMLInputElement;
+      console.log(value);
+      element.value = value;
     });
   };
 
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg" className={props.disabled ? 'is-content-disabled' : ''}>
-      {ReactHtmlParser(formatLabel(props.options), {
+      <Container
+        maxWidth="lg"
+        className={props.disabled ? 'is-content-disabled fillbox' : 'fillbox'}
+      >
+        {ReactHtmlParser(formatLabel(props.options), {
           transform: htmlParserTransform
         })}
       </Container>

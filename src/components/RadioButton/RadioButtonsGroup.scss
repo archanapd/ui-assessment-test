@@ -8,15 +8,17 @@
 
 .radio-wrapper {
   margin-top: 20px;
-
 }
 .img-wrapper {
   img {
-    max-width: 390px;
-    height: 191px;
+    max-width: 378px;
+    width: auto;
+    //height: 191px;
+    min-height: 100px;
+    display: block;
   }
   .cake-vdo-row {
-    max-width: 390px;
+    max-width: 378px;
   }
   .MuiFormGroup-root, .MuiFormControlLabel-root {
     .vdo-player-wrapper {
@@ -26,6 +28,9 @@
     }
     .MuiTypography-root {
       padding: 9px 0 !important;
+    }
+    .Mui-checked {
+      color: #98C93C;
     }
   }
   &>div {
@@ -101,9 +106,6 @@
     position: relative;
     margin: 10px 0;
   }
-}
-.is-content-disabled {
-  pointer-events: none;
 }
 .audio-label-class .MuiFormControlLabel-label {
   width: 100%;

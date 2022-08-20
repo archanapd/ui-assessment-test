@@ -176,12 +176,14 @@ const QuestionWrapper = () => {
     let question: any = questions[questionIdRef - 1];
     if (question.type === 'FILL_IN_THE_BLANK_BASIC') {
       question.answerGroups.map((item: any) => {
-        item.answers[0].content = (document.getElementById(item.groupId) as HTMLInputElement).value;
+        item.answers[0].content = (
+          document.getElementById(item.groupId + question.ref) as HTMLInputElement
+        ).value;
       });
     } else if (question.type === 'SPEECH_BASIC') {
       question.answerGroups.map((item: any) => {
         item.answers[0].content = (
-          document.getElementById('SPEECH_BASIC') as HTMLInputElement
+          document.getElementById('SPEECH_BASIC' + question.ref) as HTMLInputElement
         ).innerHTML;
       });
     }

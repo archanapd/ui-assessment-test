@@ -32,6 +32,7 @@ body {
 }
 .submit-wrapper {
   padding-bottom: 200px;
+  pointer-events: none;
 
   .green-text {
     color: #98c93c;
@@ -40,7 +41,7 @@ body {
     padding: 16px;
     margin-bottom: 1.5rem;
     text-align: left;
-    pointer-events:none;
+    // pointer-events:none;
     &:last-child {
       border-bottom: none;
     }
@@ -156,7 +157,7 @@ body {
 }
 .qst-choice {
   .MuiContainer-root {
-    padding-left: 0 !important;
+    //padding-left: 0 !important;
     padding-right: 0 !important;
   }
   .MuiRadio-colorPrimary {
@@ -297,19 +298,6 @@ audio::-webkit-media-controls-enclosure {
 }
 /*Summary*/
 .submit-wrapper {
-  .submit-wrapper-title {
-    h4 {
-      font-family: 'Gotham Rounded' !important;
-      color: $primary-blue;
-      font-size: 1.5rem;
-      text-align: left;
-    }
-    p {
-      color: $blue-900;
-      font-size: 0.875rem;
-      font-family: 'Gotham Rounded' !important;
-    }
-  }
   .submit-wrapper-result {
     background-color: #f5f4f8;
     padding: 1.125rem;
@@ -366,7 +354,7 @@ audio::-webkit-media-controls-enclosure {
       }
     }
   }
-  .answer-value-container {
+  .answer-value-container .answer-values {
     img,
     audio,
     video {
@@ -390,11 +378,27 @@ audio::-webkit-media-controls-enclosure {
     .MuiCheckbox-colorPrimary.Mui-checked + span, .MuiCheckbox-colorPrimary.Mui-checked {
       color: $green;
     }
+    .MuiFormGroup-root .MuiTypography-root {
+      padding-left: 0 !important;
+    }
   }
   .radio-buttons,
   .chk-buttons {
     display: flex;
     align-items: center;
+  }
+}
+.submit-wrapper-title, .preview-wrapper-title {
+  h4 {
+    font-family: 'Gotham Rounded' !important;
+    color: $primary-blue;
+    font-size: 1.5rem;
+    text-align: left;
+  }
+  p {
+    color: $blue-900;
+    font-size: 0.875rem;
+    font-family: 'Gotham Rounded' !important;
   }
 }
 .footer-submit {
@@ -453,7 +457,7 @@ p {
 }
 .dialog-success {
   .dialog-content {
-    width: 300px;
+    width: auto;
   }
   .dialog-btm .btn {
     max-width: 100px;

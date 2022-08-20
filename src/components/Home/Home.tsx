@@ -84,7 +84,7 @@ function App() {
         studyId: '4',
         materialId: '5',
         categoryId: '5',
-        type: "FIXED_QUESTION",
+        type: 'FIXED_QUESTION',
         fixedQuestion: true,
         autoSubmit: false,
         instructions: [

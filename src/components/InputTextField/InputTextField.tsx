@@ -5,14 +5,13 @@ import './InputTextField.scss';
 import '../Home/Home.scss';
 
 export default function InputTextField(props: any) {
-  
-  const {itemId} = props;
+  const { itemId } = props;
 
   return (
     <Stack
       component="form"
       sx={{
-        width: '25ch',
+        width: '25ch'
       }}
       spacing={2}
       noValidate
