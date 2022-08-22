@@ -117,7 +117,7 @@ export default function VideoPlayer(props: any) {
   const totalDuration = format(duration);
   return (
     <React.Fragment>
-      <Container style={{ position: 'relative' }}>
+      <Container className='chk-opt-pl-0' style={{ position: 'relative' }}>
         <div className={'cake-vdo-row ' + classes.playerWrapper}>
           {!playing && (
             <div className="vdo-player-wrapper" onClick={handleVideoStart}>

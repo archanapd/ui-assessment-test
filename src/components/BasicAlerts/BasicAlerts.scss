@@ -3,3 +3,14 @@
         margin: 200px auto;
     }
 }
+.cake-alert {
+    background-color: #ECCDCD !important;
+    .MuiAlert-icon {
+        svg {
+            color: #9F0404;
+            border: 1px solid #fff;
+            border-radius: 50%;
+        }
+        
+    }
+}

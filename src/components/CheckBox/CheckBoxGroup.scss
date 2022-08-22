@@ -12,6 +12,9 @@
     }
     .cake-vdo-row {
       max-width: 390px;
+      @media screen and (max-width: 768px) {
+        width: 90% !important;
+      }
     }
     .MuiFormGroup-root, .MuiFormControlLabel-root {
       .vdo-player-wrapper {
@@ -21,6 +24,7 @@
       }
       .MuiTypography-root {
         padding: 9px 0 !important;
+        line-height: 0;
       }
       .Mui-checked {
         color: #98C93C;

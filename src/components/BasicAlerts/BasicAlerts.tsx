@@ -4,6 +4,7 @@ import Alert from '@mui/material/Alert';
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
+import InfoIcon from '@mui/icons-material/Info';
 
 import './BasicAlerts.scss';
 
@@ -13,7 +14,7 @@ export default function BasicAlerts(props: any) {
   return (
     <Box sx={{ width: '100%' }} className="alert-wrapper">
       <Collapse in={open} className="alert-component">
-        <Alert severity={props.severity}
+        <Alert className='cake-alert'  icon={<InfoIcon />}  severity={props.severity}
           action={
             <IconButton
               aria-label="close"
@@ -23,7 +24,7 @@ export default function BasicAlerts(props: any) {
                 setOpen(false);
               }}
             >
-              <CloseIcon fontSize="inherit" />
+              <CloseIcon fontSize="medium" />
             </IconButton>
           }
           sx={{ mb: 2 }}

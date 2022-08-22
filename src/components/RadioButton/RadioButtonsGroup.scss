@@ -105,8 +105,19 @@
   .chk-opt-item {
     position: relative;
     margin: 10px 0;
+    img {
+      margin-bottom: 0;
+      @media screen and (max-width: 768px) {
+        width: 90% !important;
+      }
+    }
   }
 }
 .audio-label-class .MuiFormControlLabel-label {
   width: 100%;
+}
+.chk-opt-item {
+  .chk-opt-pl-0 {
+    padding-left: 0;
+  }
 }
