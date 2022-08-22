@@ -1,7 +1,7 @@
 .paper {
   padding: 8px;
   border-radius: 8px;
-  box-shadow: '0 4px 5px 0 rgba(0, 0, 0, 0.14);';
+  box-shadow: "0 4px 5px 0 rgba(0, 0, 0, 0.14);";
   width: 50%;
   margin: 5%;
 }
@@ -17,10 +17,19 @@
     min-height: 100px;
     display: block;
   }
-  .cake-vdo-row {
-    max-width: 378px;
+  label {
+    .chk-opt-pl-0 {
+      .cake-vdo-row {
+        max-width: 390px !important;
+        @media screen and (max-width: 768px) {
+          max-width: 90% !important;
+        }
+      }
+    }
   }
-  .MuiFormGroup-root, .MuiFormControlLabel-root {
+
+  .MuiFormGroup-root,
+  .MuiFormControlLabel-root {
     .vdo-player-wrapper {
       .MuiSvgIcon-root {
         font-size: 48px !important;
@@ -30,10 +39,10 @@
       padding: 9px 0 !important;
     }
     .Mui-checked {
-      color: #98C93C;
+      color: #98c93c;
     }
   }
-  &>div {
+  & > div {
     .MuiTypography-root {
       div {
         // font-family: 'Gotham Rounded' !important;
@@ -46,13 +55,13 @@
     .MuiRadio-root {
       position: relative;
       margin-right: 0;
-      @media screen and (min-width: 992px){
-        margin-right: 24px;
+      @media screen and (min-width: 992px) {
+        margin-right: 0;
       }
       &::before {
-        font-family: 'Gotham Rounded';
+        font-family: "Gotham Rounded";
         font-size: 15px;
-        color: #8F8E98;
+        color: #8f8e98;
         border-radius: 50px;
         border: 3px solid;
         width: 24px;
@@ -62,7 +71,7 @@
       }
       &.Mui-checked {
         &::before {
-          color: #98C93C;
+          color: #98c93c;
         }
       }
       .MuiFormControlLabel-root {
@@ -71,7 +80,7 @@
     }
     &:nth-child(1) {
       margin-bottom: 24px;
-      border-bottom: 1px solid #B9B9CB;
+      border-bottom: 1px solid #b9b9cb;
       padding-bottom: 24px;
     }
     &.MuiFormGroup-root {
@@ -91,15 +100,16 @@
       }
     }
   }
-  .Mui-checked + span{
+  .Mui-checked + span {
     &::before {
       content: "";
       position: absolute;
-      border: 2px solid #98C93C;
-      width: 100%;
+      border: 2px solid #98c93c;
+      max-width: 441px;
       height: 100%;
       left: 0;
       top: 0;
+      width: 100%;
     }
   }
   .chk-opt-item {
