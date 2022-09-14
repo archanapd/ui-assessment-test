@@ -4,15 +4,15 @@ import { Container } from '@mui/material';
 import './DragAndDrop.scss';
 
 export default function Draggables(props: any) {
-  const { answerContent, groupId, index } = props;
+  const { answerContent, id, index } = props;
 
   return (
     <Container className="draggables-wrapper">
-      <Draggable draggableId={`drag` + groupId} index={Number(index)}>
+      <Draggable draggableId={`drag` + id} index={Number(index)}>
         {(provided) => (
           <div
             className="list"
-            id={groupId}
+            id={id}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}

@@ -82,9 +82,7 @@ const PreviewWrapper = () => {
               groupId: value,
               answers: [
                 {
-                  content: {
-                    ...correctAnswerOption.filter((item: any) => item.groupId === value)[0]
-                  },
+                  ...correctAnswerOption.filter((item: any) => item.groupId === value)[0],
                   groupId: value
                 }
               ]
@@ -152,31 +150,31 @@ const PreviewWrapper = () => {
                     </p>
                     {question.type === 'SINGLE_CHOICE' && (
                       <Grid>
-                        <RadioButtonsGroup options={question} disabled={true} />
+                        <RadioButtonsGroup options={question} disabled={false} />
                       </Grid>
                     )}
 
                     {question.type === 'MULTIPLE_CHOICE' && (
                       <Grid>
-                        <CheckBoxGroup options={question} disabled={true} />
+                        <CheckBoxGroup options={question} disabled={false} />
                       </Grid>
                     )}
 
                     {question.type === 'FILL_IN_THE_BLANK_BASIC' && (
                       <Grid>
-                        <FillInTheBlanks options={question} disabled={true} />
+                        <FillInTheBlanks options={question} disabled={false} />
                       </Grid>
                     )}
 
                     {question.type === 'FILL_IN_THE_BLANK_DROPDOWN' && (
                       <Grid>
-                        <FillInTheSelect options={question} disabled={true} />
+                        <FillInTheSelect options={question} disabled={false} />
                       </Grid>
                     )}
 
                     {question.type === 'FILL_IN_THE_BLANK_DRAG' && (
                       <Grid>
-                        <DragAndDrop options={question} disabled={true} />
+                        <DragAndDrop options={question} disabled={false}/>
                       </Grid>
                     )}
 

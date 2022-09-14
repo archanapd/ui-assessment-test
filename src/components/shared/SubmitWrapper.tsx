@@ -54,7 +54,7 @@ const SubmitWrapper = () => {
   const handleClose = () => {
     setOpen(false);
     setSuOpen(false);
-    navigate('/');
+    //navigate('/');
   };
 
   const hideModalAndSubmit = () => {

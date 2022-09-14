@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { createSpeechlySpeechRecognition } from '@speechly/speech-recognition-polyfill';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import './SpeakTheWords.scss';
 import VideoImg from 'assets/recording-img.gif';
 import ReactHtmlParser from 'react-html-parser';
+import { defaultLanguage } from '../../config/constants';
 
 const SpeakTheWords = (props: any) => {
+  const speechLanguage = props.lang ? props.lang : defaultLanguage;
+  const SpeechlySpeechRecognition = createSpeechlySpeechRecognition('5542e877-e3fc-4b5c-a528-42d2d35d3df0');
+
   const commands = [
     {
       command: 'reset',
@@ -46,18 +51,12 @@ const SpeakTheWords = (props: any) => {
   };
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return null;
-  }
-
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    console.log(
-      'Your browser does not support speech recognition software! Try Chrome desktop, maybe?'
-    );
+    SpeechRecognition.applyPolyfill(SpeechlySpeechRecognition);
   }
   const listenContinuously = () => {
     SpeechRecognition.startListening({
-      continuous: true
-      // language: 'en-GB'
+      continuous: true,
+      language: speechLanguage
     });
   };
 

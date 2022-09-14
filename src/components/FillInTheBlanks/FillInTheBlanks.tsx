@@ -56,13 +56,13 @@ export default function FillInTheBlanks(this: any, props: any) {
 
   const updateAnswers = (question: any) => {
     question.answerGroups.map((item: any, i: number) => {
-      const value =
-        item.answers[0].content.content && item.answers[0].content.content.length >= 1
-          ? item.answers[0].content.content
-          : item.answers[0].content;
-      const element = document.getElementById(item.groupId + question.ref) as HTMLInputElement;
-      console.log(value);
-      element.value = value;
+
+      console.log(item.answers[0])
+      const value = item.answers[0].content;
+      if (value.length > 0) {
+        const element = document.getElementById(item.groupId + question.ref) as HTMLInputElement;
+        element.value = value;
+      }
     });
   };
 

@@ -6,19 +6,6 @@ import { Droppable } from 'react-beautiful-dnd';
 import './DragAndDrop.scss';
 import DraggableAnswers from './DraggableAnswers';
 
-const formatLabel = (mainQuestion: any) => {
-  let queryString: any = mainQuestion.content;
-
-  mainQuestion.answerGroupRef.forEach((id: any, i: number) => {
-    queryString = queryString.replace('[' + id + ']', addSpan(id, i));
-  });
-  return queryString;
-};
-
-const addSpan = (key: any, i: number) => {
-  return '<span key=' + i + ' id=' + i + '></span>';
-};
-
 export default function DropZone(props: any) {
   const { mainQuestion, answerArray, questionArray, droppedValueArray } = props.data;
 
@@ -35,6 +22,19 @@ export default function DropZone(props: any) {
         ></DropZoneItem>
       );
     }
+  };
+
+  const formatLabel = (mainQuestion: any) => {
+    let queryString: any = mainQuestion.content;
+
+    mainQuestion.answerGroupRef.forEach((id: any, i: number) => {
+      queryString = queryString.replace('[' + id + ']', addSpan(id, i));
+    });
+    return queryString;
+  };
+
+  const addSpan = (key: any, i: number) => {
+    return '<span key=' + i + ' id=' + i + '></span>';
   };
 
   return (
@@ -56,7 +56,7 @@ export default function DropZone(props: any) {
                       key={i}
                       answerArray={answerArray}
                       answerContent={item.content}
-                      groupId={item.groupId}
+                      id={item.id}
                       index={i}
                     />
                   );

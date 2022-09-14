@@ -30,7 +30,6 @@ import timeOutImg from 'assets/red-exclamationmark.svg';
 import CloseIcon from '@mui/icons-material/Close';
 import Countdown from 'react-countdown';
 import timeOutYellow from 'assets/yellow-exclamationmark.svg';
-import fileSubmittedImg from 'assets/green-file-filled.svg';
 import ProgressBar from 'components/ProgressBar/ProgressBar';
 
 const QuestionWrapper = () => {
@@ -44,7 +43,6 @@ const QuestionWrapper = () => {
   const numberOfQuestions = initSettings[0].numberOfQuestions;
 
   let [questions, setQuestion] = React.useState<any[]>([]);
-  const [error, setError] = React.useState({});
   const [time, setTime] = React.useState(0);
   const [sessionSubmitted, setSessionSubmitted] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(1);
@@ -59,11 +57,11 @@ const QuestionWrapper = () => {
         if (indx === -1) {
           setQuestion([...questions, data]);
         } else {
-          setQuestion([...questions[indx], data]);
+          setQuestion([...questions[indx], data] || []);
         }
-        setTime(Date.now() + data.sessionTimeout * 1000);
+        if (data.sessionTimeout) setTime(Date.now() + data.sessionTimeout * 1000);
       },
-      error: (error) => setError(error)
+      error: (error) => console.log(error)
     });
   };
 
@@ -105,12 +103,14 @@ const QuestionWrapper = () => {
       currentQuestion.type === 'SPEECH_BASIC'
     ) {
       currentQuestion.answerGroups.map((data: any, i: number) => {
-        bodyJson.userInputs.push({
-          content: data.answers[i].content,
-          groupId: data.groupId
-        });
-        bodyJson.userInputs.shift();
+        if (data.answers[0].content.length > 0) {
+          bodyJson.userInputs.push({
+            content: data.answers[0].content,
+            groupId: data.groupId
+          });
+        }
       });
+      bodyJson.userInputs.shift();
     } else {
       currentQuestion.answerGroups.map((data: any, i: number) => {
         data.answers.map((item: any) => {
@@ -210,7 +210,6 @@ const QuestionWrapper = () => {
   const handleClose = () => {
     setOpen(false);
     navigate('/');
-    // submitAnswers();
   };
 
   const handleAlertClose = () => {
@@ -268,11 +267,11 @@ const QuestionWrapper = () => {
       </ThemeProvider>
       <Container maxWidth="sm">
         <Box sx={{ bgcolor: 'white' }} className="question-wrapper">
-          {questions[questionIdRef - 1] && time && (
+          {/* {questions[questionIdRef - 1] && time > 0 && initSettings[0].timeBound   (
             <h3 className="txt-time-limit" onClick={showSubmitModal}>
               Time Limit <Countdown date={time} renderer={renderer} />
             </h3>
-          )}
+          )} */}
           <p className="progressbar-title">
             Question {questionId} of {initSettings[0].numberOfQuestions}
             <span className="progress-bar">

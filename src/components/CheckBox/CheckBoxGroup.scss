@@ -1,116 +1,116 @@
 .audio-label-class .MuiFormControlLabel-label {
-    width: 100%;
-  }
+  width: 100%;
+}
 .checkbox-wrapper {
-  .img-wrapper {
-    img {
-      max-width: 390px;
-      width: auto;
-      //height: 191px;
-      min-height: 100px;
-      display: block;
+.img-wrapper {
+  img {
+    max-width: 390px;
+    width: auto;
+    //height: 191px;
+    min-height: 100px;
+    display: block;
+  }
+  .cake-vdo-row {
+    max-width: 390px;
+    @media screen and (max-width: 768px) {
+      width: 95% !important;
     }
-    .cake-vdo-row {
-      max-width: 390px;
-      @media screen and (max-width: 768px) {
-        width: 95% !important;
-      }
-    }
-    .MuiFormGroup-root, .MuiFormControlLabel-root {
-      .vdo-player-wrapper {
-        .MuiSvgIcon-root {
-          font-size: 48px !important;
-        }
-      }
-      .MuiTypography-root {
-        padding: 9px 0 !important;
-        line-height: 0;
-      }
-      .Mui-checked {
-        color: #98C93C;
+  }
+  .MuiFormGroup-root, .MuiFormControlLabel-root {
+    .vdo-player-wrapper {
+      .MuiSvgIcon-root {
+        font-size: 48px !important;
       }
     }
-    &>div {
-      .MuiTypography-root {
-        div {
-          // font-family: 'Gotham Rounded' !important;
-          // font-size: 12px;
-          br {
-            display: none;
-          }
+    .MuiTypography-root {
+      padding: 9px 0 !important;
+      line-height: 0;
+    }
+    .Mui-checked {
+      color: #98C93C;
+    }
+  }
+  &>div {
+    .MuiTypography-root {
+      div {
+        // font-family: 'Gotham Rounded' !important;
+        // font-size: 12px;
+        br {
+          display: none;
         }
       }
-      .MuiRadio-root {
-        position: relative;
-        margin-right: 0;
-        @media screen and (min-width: 992px){
-          margin-right: 24px;
-        }
+    }
+    .MuiRadio-root {
+      position: relative;
+      margin-right: 0;
+      @media screen and (min-width: 992px){
+        margin-right: 24px;
+      }
+      &::before {
+        font-family: 'Gotham Rounded';
+        font-size: 15px;
+        color: #8F8E98;
+        border-radius: 50px;
+        border: 3px solid;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 1.3;
+      }
+      &.Mui-checked {
         &::before {
-          font-family: 'Gotham Rounded';
-          font-size: 15px;
-          color: #8F8E98;
-          border-radius: 50px;
-          border: 3px solid;
-          width: 24px;
-          height: 24px;
-          text-align: center;
-          line-height: 1.3;
+          color: #98C93C;
         }
-        &.Mui-checked {
-          &::before {
-            color: #98C93C;
-          }
+      }
+      .MuiFormControlLabel-root {
+        flex: 1;
+      }
+    }
+    &:nth-child(1) {
+      margin-bottom: 24px;
+      border-bottom: 1px solid #B9B9CB;
+      padding-bottom: 24px;
+    }
+    &.MuiFormGroup-root {
+      margin-bottom: 24px;
+      .MuiTypography-root {
+        padding: 24px 0;
+        img {
+          margin-bottom: 0;
         }
-        .MuiFormControlLabel-root {
+      }
+      .MuiFormControlLabel-root {
+        position: relative;
+        margin: 0;
+        .MuiTypography-root {
           flex: 1;
         }
       }
-      &:nth-child(1) {
-        margin-bottom: 24px;
-        border-bottom: 1px solid #B9B9CB;
-        padding-bottom: 24px;
-      }
-      &.MuiFormGroup-root {
-        margin-bottom: 24px;
-        .MuiTypography-root {
-          padding: 24px 0;
-          img {
-            margin-bottom: 0;
-          }
-        }
-        .MuiFormControlLabel-root {
-          position: relative;
-          margin: 0;
-          .MuiTypography-root {
-            flex: 1;
-          }
-        }
-      }
     }
-    .Mui-checked + span{
-      &::before {
-        content: "";
-        position: absolute;
-        border: 2px solid #98C93C;
-        max-width: 441px;
-        height: 100%;
-        left: 0;
-        top: 0;
-      }
+  }
+  .Mui-checked + span{
+    &::before {
+      content: "";
+      position: absolute;
+      border: 2px solid #98C93C;
+      max-width: 441px;
+      height: 100%;
+      left: 0;
+      top: 0;
     }
-    .chk-opt-item {
-      position: relative;
-      margin: 10px 0;
+  }
+  .chk-opt-item {
+    position: relative;
+    margin: 10px 0;
+  }
+}
+}
+.img-wrapper {
+div {
+  .chk-opt-pl-0 {
+    .cake-vdo-row {
+      max-width: 100%;
     }
   }
 }
-.img-wrapper {
-  div {
-    .chk-opt-pl-0 {
-      .cake-vdo-row {
-        max-width: 100%;
-      }
-    }
-  }
 }

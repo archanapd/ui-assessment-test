@@ -11,7 +11,6 @@ export default function PageNotFound(props: any) {
   const returnHome = () => {
     navigate('/');
   };
-
   const darkTheme = createTheme({
     palette: {
       primary: {
@@ -29,7 +28,6 @@ export default function PageNotFound(props: any) {
           {<img alt="" className="inner-header" src={logo}></img>}
         </AppBar>
       </ThemeProvider>
-
       <Container maxWidth="lg">
         <Box
           className="page-not-found d-flex align-items-center flex-column py-5 justify-content-center"

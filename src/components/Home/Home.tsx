@@ -35,11 +35,11 @@ function App() {
     navigate('/questions/' + 1, {});
   };
   const assessmentData = {
-    assessmentLink: assessmentLink,
-    userId: 'user0012'
+    assessmentLink: '7a4ab870-958e-477d-8f2e-0203070fb1a5',
+    userId: 'test12'
   };
   const getAssessmentSettings = (newAssessmentLink: string) => {
-    assessmentData.assessmentLink = newAssessmentLink ? newAssessmentLink : assessmentLink;
+    //assessmentData.assessmentLink = newAssessmentLink ? newAssessmentLink : assessmentLink;
     callAPI({
       method: 'post',
       data: assessmentData,
@@ -59,59 +59,60 @@ function App() {
     setOpenDialog(false);
   };
 
-  const createAssessment = () => {
-    callAPI({
-      method: 'post',
-      data: {
-        title: 'General Summer Exam',
-        sections: [
-          {
-            numberOfQuestions: 2,
-            level: 'LOW'
-          },
-          {
-            numberOfQuestions: 2,
-            level: 'MEDIUM'
-          },
-          {
-            numberOfQuestions: 1,
-            level: 'HIGH'
-          }
-        ],
-        timeBound: true,
-        timeInMinutes: 30,
-        levelId: '3',
-        studyId: '4',
-        materialId: '5',
-        categoryId: '5',
-        type: 'FIXED_QUESTION',
-        fixedQuestion: true,
-        autoSubmit: false,
-        instructions: [
-          "You'll be asked 5 questions to test your knowledge",
-          'To pass you need a score of <b>80%</b>',
-          "You can always have another go if you don't pass them all on this attempt",
-          'Skipping a quesion will result in a failed answer',
-          'There is no time limit, however if you are inactive for 15 minutes or more for security you will be logged out of the platform and your progress will be lost'
-        ]
-      },
-      resource: BASE_URL + '/assessment/create',
-      success: (data) => {
-        setAssessmentLink(data.link);
-        localStorage.setItem('assessment-link', data.link);
-        setTimedOut(false);
-        getAssessmentSettings(data.link);
-      },
-      error: (error) => console.log(error)
-    });
-  };
+  // const createAssessment = () => {
+  //   callAPI({
+  //     method: 'post',
+  //     data: {
+  //       title: 'General Summer Exam',
+  //       sections: [
+  //         {
+  //           numberOfQuestions: 2,
+  //           level: 'LOW'
+  //         },
+  //         {
+  //           numberOfQuestions: 2,
+  //           level: 'MEDIUM'
+  //         },
+  //         {
+  //           numberOfQuestions: 1,
+  //           level: 'HIGH'
+  //         }
+  //       ],
+  //       timeBound: true,
+  //       timeInMinutes: 30,
+  //       levelId: '3',
+  //       studyId: '4',
+  //       materialId: '5',
+  //       categoryId: '5',
+  //       type: 'FIXED_QUESTION',
+  //       fixedQuestion: true,
+  //       autoSubmit: false,
+  //       instructions: [
+  //         "You'll be asked 5 questions to test your knowledge",
+  //         'To pass you need a score of <b>80%</b>',
+  //         "You can always have another go if you don't pass them all on this attempt",
+  //         'Skipping a quesion will result in a failed answer',
+  //         'There is no time limit, however if you are inactive for 15 minutes or more for security you will be logged out of the platform and your progress will be lost'
+  //       ]
+  //     },
+  //     resource: BASE_URL + '/assessment/create',
+  //     success: (data) => {
+  //       setAssessmentLink(data.link);
+  //       localStorage.setItem('assessment-link', data.link);
+  //       setTimedOut(false);
+  //       getAssessmentSettings(data.link);
+  //     },
+  //     error: (error) => console.log(error)
+  //   });
+  // };
 
   React.useEffect(() => {
-    if (assessmentLink) {
-      getAssessmentSettings('');
-    } else {
-      setTimedOut(true);
-    }
+    getAssessmentSettings('');
+    // if (assessmentLink) {
+    //   getAssessmentSettings('');
+    // } else {
+    //   setTimedOut(true);
+    // }
   }, []);
 
   return (
@@ -128,14 +129,14 @@ function App() {
             <div className="cover"></div>
             {
               <Grid className="mt-5">
-                {!timedOut && (
+                {/* {!timedOut && (
                   <Button variant="primary" className="mx-2" onClick={startAssessment}>
                     Start Now
                   </Button>
-                )}
-                <Button variant="primary" className="mx-2" onClick={createAssessment}>
-                  Create Assessment
-                </Button>
+                )} */}
+                <Button variant="primary" className="mx-2" onClick={startAssessment}>
+                    Start Now
+                  </Button>
               </Grid>
             }
           </div>

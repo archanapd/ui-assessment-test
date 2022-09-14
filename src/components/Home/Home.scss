@@ -196,11 +196,11 @@ body {
     margin-bottom: 0;
     max-width: 390px;
   }
-  div {
-    &>br {
-      display: none;
-    }
-  }
+  // div {
+  //   &>br {
+  //     display: none;
+  //   }
+  // }
 }
 audio::-webkit-media-controls-play-button {
   background-color: #00adc6;

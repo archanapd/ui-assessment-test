@@ -20,7 +20,7 @@ export default function DropZoneItem(props: any) {
                   key={index}
                   answerArray={answerArray}
                   answerContent={droppedValueArray[index].content}
-                  groupId={droppedValueArray[index].groupId}
+                  id={droppedValueArray[index].id}
                   index={index}
                 />
               </div>

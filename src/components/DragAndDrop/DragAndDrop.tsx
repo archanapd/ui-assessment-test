@@ -11,15 +11,29 @@ export default function DragAndDrop(props: any) {
   const questionArray: any = [];
   let droppedValueArray: any = [];
 
-  question.answerGroups.map((item: any, i: number) => {
-    if (item.answers[0].selected) {
-      let groupId = item.answers[0].selectedGroupId
-        ? item.answers[0].selectedGroupId
-        : item.groupId;
-      let index = question.answerGroupRef.indexOf(groupId);
-      droppedValueArray[index] = item.answers[0];
+  const [data, setData] = useState<any | []>([]);
+
+  question.answerGroups.map((itemGroup: any, i: number) => {
+    if (itemGroup.answers.length === 1) {
+      if (itemGroup.answers[0].selected === true) {
+        let groupId = itemGroup.answers[0].selectedGroupId
+          ? itemGroup.answers[0].selectedGroupId
+          : itemGroup.groupId;
+        let index = question.answerGroupRef.indexOf(groupId);
+        droppedValueArray[index] = itemGroup.answers[0];
+      } else {
+        answerArray.push(itemGroup.answers[0]);
+      }
     } else {
-      answerArray.push(item.answers[0]);
+      itemGroup.answers.forEach((item: any, i: number) => {
+        if (item.selected === true) {
+          let idd = item.selectedGroupId;
+          let index = question.answerGroupRef.indexOf(idd);
+          droppedValueArray[index] = item
+        } else {
+          answerArray.push(item);
+        }
+      })
     }
   });
 
@@ -33,8 +47,10 @@ export default function DragAndDrop(props: any) {
     answerArray: answerArray,
     droppedValueArray: droppedValueArray
   };
-
-  const [data, setData] = useState({ ...initialData });
+  
+  useEffect(() => {
+    setData({ ...initialData });
+  }, [props]);
 
   const DragEnd = (result: DropResult) => {
     const { source, destination } = result;
@@ -69,7 +85,7 @@ export default function DragAndDrop(props: any) {
     }
     if (destination.droppableId === 'answerLists') {
       const removed = tempDropArray[startIndex];
-      let index = question.answerGroupRef.indexOf(removed.groupId);
+      let index = question.answerGroupRef.indexOf(removed.groupId ? removed.groupId : removed.selectedGroupId);
       question.answerGroups[index].answers[0].selected = false;
       question.answerGroups[index].answers[0].selectedGroupId = null;
 
@@ -87,14 +103,16 @@ export default function DragAndDrop(props: any) {
       const removed = tempDropArray[startIndex];
       delete tempDropArray[startIndex];
       tempDropArray[destination.droppableId] = removed;
-
-      let index = question.answerGroupRef.indexOf(removed.groupId);
+      let index = question.answerGroupRef.indexOf(removed.groupId ? removed.groupId : removed.selectedGroupId);
       question.answerGroups[index].answers[0].selected = true;
       question.answerGroups[index].answers[0].selectedGroupId =
         question.answerGroupRef[destination.droppableId];
 
       setData({ ...data, droppedValueArray: tempDropArray });
     }
+
+    console.log(droppedValueArray)
+    console.log(answerArray)
   };
 
   return (
@@ -103,7 +121,7 @@ export default function DragAndDrop(props: any) {
       <Container>
         <DragDropContext onDragEnd={DragEnd}>
           <Grid>
-            <DropZone data={data}></DropZone>
+            {data.mainQuestion && <DropZone data={data}></DropZone>}
           </Grid>
         </DragDropContext>
       </Container>

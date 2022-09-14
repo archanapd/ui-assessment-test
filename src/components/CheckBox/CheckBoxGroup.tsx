@@ -33,9 +33,9 @@ export default function CheckBoxGroup(props: any) {
     });
   };
 
-  const htmlParserTransform = (node: any) => {
+  const htmlParserTransform = (node: any, i:number) => {
     if (node.type == 'tag' && node.name == 'video') {
-      const nodeVal = <VideoPlayer key={1} url={node.children[0].attribs.src} />;
+      const nodeVal = <VideoPlayer key={i} url={node.children[0].attribs.src} />;
       return nodeVal;
     }
   };

@@ -48,10 +48,9 @@ export default function RadioButtonsGroup(props: any) {
     });
   };
 
-  const htmlParserTransform = (node: any) => {
+  const htmlParserTransform = (node: any, i:number) => {
     if (node.type == 'tag' && node.name == 'video') {
-      const randomKey = Math.floor(Math.random() * 1000 + 1);
-      const nodeVal = <VideoPlayer key={randomKey} url={node.children[0].attribs.src} />;
+      const nodeVal = <VideoPlayer key={i} url={node.children[0].attribs.src} />;
       return nodeVal;
     }
   };

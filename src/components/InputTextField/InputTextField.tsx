@@ -11,7 +11,7 @@ export default function InputTextField(props: any) {
     <Stack
       component="form"
       sx={{
-        width: '25ch'
+        width: '16ch'
       }}
       spacing={2}
       noValidate
