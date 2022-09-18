@@ -1,0 +1,55 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 111" width="1280" height="111">
+	<title>Main Banner IELTS-svg</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m0 0h1280v424h-1280z"/>
+		</clipPath>
+		
+		<linearGradient id="g2" x1="1233" y1="0" x2="1233" y2="94" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#55c5d1"/>
+			<stop offset="1" stop-color="#4699c2"/>
+		</linearGradient>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m0 0h276c8.84 0 16 7.16 16 16v154.85h-292z"/>
+		</clipPath>
+		<linearGradient id="g3" x1="690.6" y1="265.6" x2="715.8" y2="283.2" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#00adc6" stop-opacity="0"/>
+			<stop offset="1" stop-color="#00adc6"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+		.s1 { fill: #ffffff } 
+		.s2 { fill: #98c93c } 
+		.s3 { fill: url(#g2) } 
+		.s4 { fill: #a5dde7 } 
+		.s5 { fill: #0069b1 } 
+		.s6 { opacity: .9;fill: url(#g3) } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g id="Layer">
+			<path id="Layer" class="s0" d="m0 0h1280v496h-1280z"/>
+			<path id="Layer" class="s1" d="m1103 68l28-28v56z"/>
+			<path id="Layer" class="s2" d="m1069 68l28-28v56z"/>
+			<path id="Layer" class="s3" d="m1186 0h67.9c0 14.5 11.6 26.1 26.1 26.1v67.9c-51.8 0-94-42.2-94-94z"/>
+			<g id="Clip-Path" clip-path="url(#cp2)">
+				<g id="Layer">
+					<path id="Layer" class="s4" d="m0 0h73v58c0 8.3-6.7 15-15 15h-58z"/>
+					<path id="Layer" class="s2" d="m73 0v52.7c-11.2 0-20.3 9.1-20.3 20.3h-52.7c0-40.2 32.8-73 73-73z"/>
+					<path id="Layer" class="s4" d="m135.3 38.3l-26.3 26.3v-52.6z"/>
+					<path id="Layer" class="s5" d="m161.6 38.3l-26.3 26.3v-52.6z"/>
+					<path id="Layer" class="s4" d="m135.3 38.3l-26.3 26.3v-52.6z"/>
+					<path id="Layer" class="s5" d="m161.6 38.3l-26.3 26.3v-52.6z"/>
+					<path id="Layer" class="s4" d="m135.3 38.3l-26.3 26.3v-52.6z"/>
+					<path id="Layer" class="s5" d="m161.6 38.3l-26.3 26.3v-52.6z"/>
+				</g>
+			</g>
+			<path id="Layer" class="s2" d="m94 424h-94c0-30.9 0-57.7 0-94 51.8 0 94 42.2 94 94z"/>
+			<path id="Layer" class="s6" d="m703.5 289c-8.6 0-15.5-6.7-15.5-15 0-8.3 6.9-15 15.5-15 8.6 0 15.5 6.7 15.5 15 0 8.3-6.9 15-15.5 15z"/>
+			<path id="Layer" class="s4" d="m582 67c-13.9 0-27.7-2.7-40.6-8.1-12.8-5.3-24.5-13.1-34.4-22.9-9.8-9.9-17.6-21.6-22.9-34.4-5.4-12.9-8.1-26.7-8.1-40.6h49.4c0 7.4 1.5 14.8 4.3 21.7 2.9 6.8 7 13.1 12.3 18.3 5.2 5.3 11.5 9.4 18.3 12.3 6.9 2.8 14.3 4.3 21.7 4.3z"/>
+			<path id="Layer" class="s2" d="m582 17.6c7.4 0 14.8-1.5 21.7-4.3 6.8-2.9 13.1-7 18.3-12.3 5.3-5.2 9.4-11.5 12.3-18.3 2.8-6.9 4.3-14.3 4.3-21.7h49.4c0 13.9-2.7 27.7-8.1 40.6-5.3 12.8-13.1 24.5-22.9 34.4-9.9 9.8-21.6 17.6-34.4 22.9-12.9 5.4-26.7 8.1-40.6 8.1z"/>
+			<path id="Layer" class="s2" d="m1245.9 389.5l18.5 18.5h-37z"/>
+			<path id="Layer" class="s4" d="m1245.9 368l18.5 18.5h-37z"/>
+		</g>
+	</g>
+</svg>
