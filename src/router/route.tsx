@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PageNotFound from 'components/shared/PageNotFound';
 import PdfViewer from 'components/shared/PdfViewer';
 import ResultsPage from 'components/shared/ResultsPage';
+import Register from 'components/shared/Register';
 
 const AppRouter = (props: any) => {
   return (
@@ -18,6 +19,7 @@ const AppRouter = (props: any) => {
         <Route path="/preview/:questionId" element={<PreviewWrapper />} />
         <Route path="/pdf" element={<PdfViewer />} />
         <Route path="/results" element={<ResultsPage />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
