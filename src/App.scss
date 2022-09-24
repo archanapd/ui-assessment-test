@@ -53,6 +53,20 @@ body {
     font-size: 16px;
   }
 } 
-// .is-content-disabled {
-//   pointer-events: none;
-// }
+.dashboard-bg {
+  background-color: #0069B1;
+  position: relative;
+  .dashboard-bg-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  h2 {
+    color: #fff;
+    font-size: 40px;
+  }
+  p {
+    color: #fff;
+    font-size: 25px;
+  }
+}

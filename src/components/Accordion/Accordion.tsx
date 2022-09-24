@@ -9,6 +9,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { Box } from "@mui/material";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -20,9 +21,29 @@ const Accordion = styled((props: AccordionProps) => (
   },
 }));
 
+const CustomExpandIcon = () => {
+  return (
+    <Box
+      sx={{
+        ".Mui-expanded & > .collapsIconWrapper": {
+          display: "none"
+        },
+        ".expandIconWrapper": {
+          display: "none"
+        },
+        ".Mui-expanded & > .expandIconWrapper": {
+          display: "block"
+        }
+      }}
+    >
+      <div className="expandIconWrapper"><AddIcon sx={{ color: '#00ADC6'}}/></div>
+      <div className="collapsIconWrapper"><RemoveIcon sx={{ color: '#00ADC6'}}/></div>
+    </Box>
+  );
+};
+
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
-    expandIcon={<AddIcon sx={{ fontSize: '20px', color: '#0069B1', }} />}
     {...props}
   />
 ))(({ theme }) => ({
@@ -68,7 +89,7 @@ export default function CustomizedAccordions() {
   return (
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" expandIcon={<CustomExpandIcon />}>
           <Typography>Beginner</Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -78,7 +99,7 @@ export default function CustomizedAccordions() {
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header" expandIcon={<CustomExpandIcon />}>
           <Typography>Intermediate</Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -88,7 +109,7 @@ export default function CustomizedAccordions() {
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header" expandIcon={<CustomExpandIcon />}>
           <Typography>Advance</Typography>
         </AccordionSummary>
         <AccordionDetails>
