@@ -20,6 +20,8 @@ import './Home.scss';
 import logo from 'assets/cakap-logo.svg';
 import CloseIcon from '@mui/icons-material/Close';
 import fileSubmittedImg from '../../assets/green-file-filled.svg';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import icoTerms from 'assets/terms.svg';
 
 function App() {
   let navigate = useNavigate();
@@ -122,6 +124,15 @@ function App() {
           <img className="home-logo" src={logo} alt="logo" />
           <div className="home-main">
             <h2>Placement Test</h2>
+            <div className='d-flex justify-content-center my-3'>
+              <span className='mx-2'><AccessTimeFilledIcon className='me-2' sx={{ color: '#0069B1'}}/>
+              30 Minutes
+              </span>
+              <span className='mx-2'>
+              <img className='me-2' src={icoTerms } />
+              30 Questions
+              </span>
+            </div>
             <p>
               There are 3 sections of this test which include Grammar, Listening, and Reading. The
               test has a total of 30 questions and should take 30 minutes to complete.
