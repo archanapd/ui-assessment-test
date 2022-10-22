@@ -38,7 +38,25 @@ export default function StudentDashboard(props: any) {
 
             
             {/* Emoji Popup starts */}
-            <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+            <div className='emoji-box'>
+              <span className='ico-emoji'>😀</span>
+              <ul className='emoji-list'>
+                <li>😀</li>
+                <li>😁</li>
+                <li>😂</li>
+                <li>😃</li>
+                <li>😄</li>
+                <li>😅</li>
+                <li>😆</li>
+                <li>😇</li>
+                <li>😈</li>
+                <li>😉</li>
+                <li>😊</li>
+                <li>😋</li>
+              </ul>
+            </div>
+
+            {/* <Button aria-describedby={id} variant="contained" onClick={handleClick}>
             <EmojiEmotionsIcon />
             </Button>
             <Popover
@@ -65,7 +83,7 @@ export default function StudentDashboard(props: any) {
                 <Button variant="text" >😊</Button>
                 <Button variant="text" >😋</Button>                
               </div>
-            </Popover>
+            </Popover> */}
             {/* Emoji Popup ends */}
 
 
